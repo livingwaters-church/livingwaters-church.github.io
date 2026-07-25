@@ -2,59 +2,327 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>My Profile | LWCC</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Profile | Living Waters Community Church</title>
+
+    <!-- Global Styles -->
     <link rel="stylesheet" href="assets/css/style.css">
+
     <style>
-        .dashboard-card { max-width: 500px; margin: 50px auto; padding: 30px; background: #fff; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        .dashboard-card input { display: block; width: 100%; margin: 10px 0 20px 0; padding: 10px; border: 1px solid #ddd; border-radius: 6px; }
-        .highlight { background-color: #fef08a !important; border: 2px solid #eab308 !important; }
+        .dashboard-wrapper {
+            padding: 50px 20px;
+        }
+
+        .dashboard-card {
+
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 35px;
+
+            background: #ffffff;
+
+            border-radius: 12px;
+
+            box-shadow:
+            0 10px 25px rgba(0,0,0,0.08);
+
+        }
+
+
+        .dashboard-card h2 {
+
+            color:#0f172a;
+
+            margin-bottom:25px;
+
+            text-align:center;
+
+        }
+
+
+        .dashboard-card label {
+
+            font-weight:700;
+
+            color:#334155;
+
+            display:block;
+
+            margin-bottom:5px;
+
+        }
+
+
+        .dashboard-card input {
+
+            display:block;
+
+            width:100%;
+
+            margin-bottom:20px;
+
+            padding:12px;
+
+            border-radius:6px;
+
+            border:1px solid #cbd5e1;
+
+            font-size:1rem;
+
+        }
+
+
+        .highlight {
+
+            background:#fef08a;
+
+            border:2px solid #eab308 !important;
+
+        }
+
+
+        .save-button {
+
+            background:#38bdf8;
+
+            color:#0f172a;
+
+            border:none;
+
+            padding:12px 25px;
+
+            border-radius:6px;
+
+            font-weight:700;
+
+            cursor:pointer;
+
+            width:100%;
+
+        }
+
+
+        .save-button:hover {
+
+            background:#0ea5e9;
+
+        }
+
+
+        .profile-message {
+
+            text-align:center;
+
+            margin-top:20px;
+
+            font-weight:600;
+
+        }
+
     </style>
 </head>
+
 <body>
 
-<div class="dashboard-card">
-    <h2>Update My Profile</h2>
-    <form id="profile-form">
-        <label>Full Name</label>
-        <input type="text" id="name" disabled>
 
-        <label>Phone Number</label>
-        <input type="tel" id="phone" class="highlight" placeholder="Update phone...">
 
-        <label>Email Address</label>
-        <input type="email" id="email" class="highlight" placeholder="Update email...">
+<!-- ============================= -->
+<!-- GLOBAL HEADER -->
+<!-- ============================= -->
 
-        <button type="submit" style="background:#38bdf8; padding:10px 20px; border:none; border-radius:6px; cursor:pointer;">Save Changes</button>
-    </form>
-</div>
+<header class="global-header">
+
+    <div class="brand-identity">
+        <span class="brand-title">
+            Living Waters
+        </span>
+
+        <span class="brand-sub">
+            Community Church
+        </span>
+
+    </div>
+    <nav class="nav-container">
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="calendar/index.html">Calendar</a></li>
+            <li><a href="ministries/index.html">Ministries</a></li>
+            <li><a href="media/index.html">Media</a></li>
+            <li><a href="members-dashboard.html"class="active">My Profile</a></li>
+            <li><a href="#"id="logout-btn"class="nav-btn btn-nav-sign-in">Sign Out</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- ============================= -->
+<!-- GLOBAL ANNOUNCEMENT TICKER -->
+<!-- ============================= -->
+
+<div id="global-ticker"></div>
+
+<!-- ============================= -->
+<!-- MEMBER PROFILE -->
+<!-- ============================= -->
+
+
+<main class="dashboard-wrapper">
+    <div class="dashboard-card">
+        <h2>
+            Update My Profile
+        </h2>
+        <form id="profile-form">
+            <label>
+                Full Name
+            </label>
+            <input 
+                type="text"
+                id="name"
+                disabled>
+            <label>
+                Phone Number
+            </label>
+            <input 
+                type="tel"
+                id="phone"
+                class="highlight"
+                placeholder="Update phone number">
+            <label>
+                Email Address
+            </label>
+            <input
+                type="email"
+                id="email"
+                class="highlight"
+                placeholder="Update email address">
+            <button 
+                type="submit"
+                class="save-button">
+                Save Changes
+            </button>
+
+        </form>
+        <div 
+            id="profile-message"
+            class="profile-message">
+        </div>
+    </div>
+</main>
+
+<!-- ============================= -->
+<!-- GLOBAL FOOTER -->
+<!-- ============================= -->
+
+<div id="global-footer"></div>
+
+
+<!-- ============================= -->
+<!-- GLOBAL JAVASCRIPT -->
+<!-- ============================= -->
+
+<script src="assets/JS/ticker.js"></script>
+
+<script src="assets/JS/footer.js"></script>
+
+<!-- ============================= -->
+<!-- MEMBER DASHBOARD JAVASCRIPT -->
+<!-- ============================= -->
 
 <script>
-    const userId = localStorage.getItem('userId'); // Assuming we store this on login
 
-    // 1. Fetch current data
-    fetch(`http://localhost:3000/api/members/${userId}`)
-        .then(res => res.json())
-        .then(member => {
-            document.getElementById('name').value = member.name;
-            document.getElementById('phone').value = member.phone || '';
-            document.getElementById('email').value = member.email || '';
-        });
+// --------------------------------
+// CHECK LOGIN STATUS
+// --------------------------------
+const loggedIn = localStorage.getItem("isLoggedIn");
+if(loggedIn !== "true"){
+    window.location.href="login.html";
+}
 
-    // 2. Submit Updates
-    document.getElementById('profile-form').addEventListener('submit', (e) => {
-        e.preventDefault();
-        fetch('http://localhost:3000/api/update-profile', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                id: userId,
-                name: document.getElementById('name').value,
-                phone: document.getElementById('phone').value,
-                email: document.getElementById('email').value
-            })
-        }).then(() => alert('Profile Updated Successfully!'));
-    });
+const userId = localStorage.getItem("userId");
+
+// --------------------------------
+// LOAD MEMBER PROFILE
+// --------------------------------
+fetch(`http://localhost:3000/api/members/${userId}`)
+.then(response => response.json())
+.then(member => {
+    document.getElementById("name").value =
+    member.name || "";
+    document.getElementById("phone").value =
+    member.phone || "";
+    document.getElementById("email").value =
+    member.email || "";
+})
+
+.catch(error => {
+    console.error(
+        "Profile loading error:",
+        error
+    );
+});
+
+// --------------------------------
+// SAVE PROFILE
+// --------------------------------
+document
+.getElementById("profile-form")
+.addEventListener("submit", function(event){
+event.preventDefault();
+fetch("http://localhost:3000/api/update-profile", {
+method:"POST",
+headers:{
+    "Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+id:userId,
+phone:
+document.getElementById("phone").value,
+email:
+document.getElementById("email").value
+})
+
+})
+
+.then(()=>{
+document.getElementById(
+"profile-message"
+).innerHTML =
+"Profile updated successfully!";
+})
+
+.catch(error=>{
+console.error(
+"Update error:",
+error
+);
+
+});
+
+});
+
+// --------------------------------
+// LOGOUT
+// --------------------------------
+
+document
+.getElementById("logout-btn")
+.addEventListener("click",function(e){
+e.preventDefault();
+localStorage.removeItem(
+"isLoggedIn"
+);
+
+localStorage.removeItem(
+"userId"
+);
+
+window.location.href="login.html";
+
+});
+
 </script>
 
 </body>
+
 </html>
