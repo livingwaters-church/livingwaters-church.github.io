@@ -976,12 +976,6 @@ html {
     margin-bottom: 15px;
 }
 
-
-/* ==========================================================================
-   ANNOUNCEMENT TICKER & GRAPHICAL SLIDESHOW LOOPS
-   ========================================================================== */
-
-/* 1. Infinite Text Ticker Styles */
 /* ==========================================================================
    12. ANNOUNCEMENT SYSTEM UTILITIES (INFINITE NO-GAP LOOPS)
    ========================================================================== */
@@ -1061,6 +1055,126 @@ html {
     padding: 40px;
 }
 
+/* Suttons Support Image */
+
+.suttons-support-image {
+    margin-top: 25px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.suttons-support-image img {
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 8px 18px rgba(0,0,0,.18);
+    transition: transform .35s ease, box-shadow .35s ease;
+}
+
+.suttons-support-image img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 35px rgba(0,0,0,.30);
+}
+
+/* ==========================================================
+   SUTTONS MISSION HORIZONTAL IMAGE CAROUSEL
+   ========================================================== */
+
+.mission-gallery-section {
+    width:100%;
+    padding:40px 20px;
+}
+
+.gallery-wrapper {
+    position:relative;
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+}
+
+/* THE TRACK */
+.mission-gallery-scroll {
+    display:flex;                 /* THIS WAS MISSING */
+    flex-wrap:nowrap;             /* Prevents wrapping */
+    gap:20px;
+    overflow-x:hidden;
+    scroll-behavior:smooth;
+    width:100%;
+    padding:35px 10px;
+}
+
+
+/* INDIVIDUAL PHOTOS */
+.mission-gallery-scroll img {
+    flex:0 0 260px;               /* Fixed card width */
+    width:260px;
+    height:190px;
+    object-fit:cover;
+
+    border-radius:12px;
+    box-shadow:0 6px 18px rgba(0,0,0,.18);
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease,
+        filter .35s ease;
+
+    cursor:pointer;
+}
+
+
+/* HOVER ZOOM */
+.mission-gallery-scroll img:hover {
+    transform:scale(1.08)
+    translateY(-8px);
+    box-shadow:0 18px 35px rgba(0,0,0,.35);
+    filter: brightness(1.08)
+    contrast(1.05);
+    z-index:10;
+}
+
+
+/* ARROWS */
+.gallery-arrow {
+    position:absolute;
+    z-index:20;
+
+    width:45px;
+    height:45px;
+
+    border:none;
+    border-radius:50%;
+
+    background:var(--primary-blue);
+    color:white;
+
+    font-size:24px;
+    cursor:pointer;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+
+.gallery-arrow.left {
+    left:-20px;
+}
+
+
+.gallery-arrow.right {
+    right:-20px;
+}
+
+
+.gallery-arrow:hover {
+    background:var(--accent-blue);
+}
+
 /* 3. Layout Sync Utilities */
 .graphic-grid {
     display: grid;
@@ -1078,8 +1192,15 @@ html {
 .video-card-sync:hover {
     transform: translateY(-4px);
 }
-.scroll-container img:hover {
-    transform: scale(1.03);
-    cursor: pointer;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+
+.calendar-frame {
+    background: var(--bg-white);
+    padding: 15px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--card-shadow);
+    border: 1px solid #e2e8f0;
+}
+
+.calendar-frame iframe {
+    border-radius: 10px;
 }
