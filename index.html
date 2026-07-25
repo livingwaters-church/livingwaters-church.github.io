@@ -22,7 +22,7 @@
                 <li><a href="ministries/index.html">Ministries</a></li>
                 <li><a href="media/index.html">Media</a></li>
                 <li><a href="calendar/index.html">Calendar</a></li>
-                <li><a href="rightnow/index.html">RightNow</a></li>
+                 <li><a href="rightnow/index.html">RightNow</a></li>
                 <li><a href="guestbook.html" class="nav-btn btn-nav-guest">Guest</a></li>
                 <li><a href="donate/index.html" class="nav-btn btn-nav-give">Give</a></li>
                 <li><a href="login.html" class="nav-btn btn-nav-sign-in" style="background: #38bdf8; color: #0f172a; padding: 10px 15px; border-radius: 6px; text-decoration: none; font-weight: 700;">Sign In</a></li>
@@ -30,24 +30,8 @@
         </nav>
     </header>
 
-    <!-- SYSTEM ANNOUNCEMENT TICKER (TOP LINE ALERTS - NO GAP LOOP) -->
-    <div class="ticker-wrap">
-        <div class="ticker-content">
-            <!-- Track 1 -->
-            <div class="ticker-item">🚨 <strong>Ron Brown Summer Lunch Program:</strong> Was a great success, thank you to all the volunteers:)</div>
-            <div class="ticker-item">🎒 <strong>2026 Backpack Giveaway:</strong> Friday, August 7th at 11:30 AM in memory of Helen J. Stanfill!</div>
-            <div class="ticker-item">📦 <strong>Food Pantry:</strong> Elisha's Closet distribution coming up on the 3rd Friday!</div>
-            <div class="ticker-item">🍎 <strong>Feeding America:</strong> Regional mass food distribution hits the 2nd Tuesday of the month!</div>
-            <div class="ticker-item">📱 <strong>RightNow Media:</strong> Free access to 25,000+ Bible study videos! Text LWKY to 49775 to join.</div>
-            
-            <!-- Track 2 (Exact Duplicate) -->
-            <div class="ticker-item">🚨 <strong>Ron Brown Summer Lunch Program:</strong> Was a great success, thank you to all the volunteers:)</div>
-            <div class="ticker-item">🎒 <strong>2026 Backpack Giveaway:</strong> Friday, August 7th at 11:30 AM in memory of Helen J. Stanfill!</div>
-            <div class="ticker-item">📦 <strong>Food Pantry:</strong> Elisha's Closet distribution coming up on the 3rd Friday!</div>
-            <div class="ticker-item">🍎 <strong>Feeding America:</strong> Regional mass food distribution hits the 2nd Tuesday of the month!</div>
-            <div class="ticker-item">📱 <strong>RightNow Media:</strong> Free access to 25,000+ Bible study videos! Text LWKY to 49775 to join.</div>
-        </div>
-    </div>
+   <!-- GLOBAL ANNOUNCEMENT TICKER -->
+    <div id="global-ticker"></div>
 
     <!-- DYNAMIC HERO SPLIT SECTION (IMMEDIATE ACTION) -->
     <section style="background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); color: #ffffff; padding: 80px 20px; border-bottom: 4px solid #38bdf8;">
@@ -126,25 +110,25 @@
                 <!-- Event 1: Gladiator Training -->
                 <div class="ministry-card event-men" style="padding: 20px; text-align: center;">
                     <h3 style="font-size: 1.1rem; margin-bottom: 10px;">Gladiator Training</h3>
-                    <p style="font-size: 0.9rem;"><strong>Date:</strong> July 11, 2026<br><strong>Time:</strong> 9:00 AM</p>
+                    <p style="font-size: 0.9rem;"><strong>Date:</strong> August 1, 2026<br><strong>Time:</strong> 9:00 AM</p>
                 </div>
         
                 <!-- Event 2: Women's Fellowship -->
                 <div class="ministry-card event-women" style="padding: 20px; text-align: center;">
                     <h3 style="font-size: 1.1rem; margin-bottom: 10px;">Women's Fellowship</h3>
-                    <p style="font-size: 0.9rem;"><strong>Date:</strong> July 13, 2026<br><strong>Time:</strong> 5:30 PM</p>
+                    <p style="font-size: 0.9rem;"><strong>Date:</strong> July 27, 2026<br><strong>Time:</strong> 5:30 PM</p>
                 </div>
         
                 <!-- Event 3: Feeding America -->
                 <div class="ministry-card event-outreach" style="padding: 20px; text-align: center;">
                     <h3 style="font-size: 1.1rem; margin-bottom: 10px;">Feeding America</h3>
-                    <p style="font-size: 0.9rem;"><strong>Date:</strong> July 14, 2026<br><strong>Time:</strong> 9:00 AM</p>
+                    <p style="font-size: 0.9rem;"><strong>Date:</strong> August 11, 2026<br><strong>Time:</strong> 9:00 AM</p>
                 </div>
         
                 <!-- Event 4: Qtr. Team Meeting -->
                 <div class="ministry-card event-admin" style="padding: 20px; text-align: center;">
-                    <h3 style="font-size: 1.1rem; margin-bottom: 10px;">Qtr. Team Meeting</h3>
-                    <p style="font-size: 0.9rem;"><strong>Date:</strong> July 19, 2026<br><strong>Time:</strong> 12:00 PM</p>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 10px;">Elisha's Closet Food Pantry</h3>
+                    <p style="font-size: 0.9rem;"><strong>Date:</strong> July 24, 2026<br><strong>Time:</strong>9:00 - 12:00 PM</p>
                 </div>
                 
             </div>
@@ -170,18 +154,19 @@
             <div class="media-panel" style="display: flex; flex-direction: column; justify-content: space-between;">
                 <div>
                     <span class="panel-badge">Latest Message</span>
-                    <h3>Obedience in Motion</h3>
+                    <h3 id="sermon-title">Loading latest sermon...</h3>
+                    <p id="sermon-speaker" style="color:#64748b; font-weight:600; margin-top:-10px; margin-bottom:15px;"> Loading speaker...</p>
                     <p>Missed last Sunday's message or want to review the scripture text again? Stream the message recording right here.</p>
                     
-                    <a href="https://www.youtube.com/watch?v=0eC8C8ggo2U" target="_blank" style="display: block; position: relative; background: #000; padding-top: 56.25%; border-radius: 6px; overflow: hidden; margin: 20px 0; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-                        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.4)), url('assets/Obedience In Motion (2).JPG') no-repeat center center/cover; display: flex; align-items: center; justify-content: center;">
+                    <a id="sermon-link" href="#" target="_blank" style="display: block; position: relative; background: #000; padding-top: 56.25%; border-radius: 6px; overflow: hidden; margin: 20px 0; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                        <div id="sermon-thumbnail" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.4)); display: flex; align-items: center; justify-content: center; background-size: cover; background-position: center;">
                             <div style="background: rgba(37, 99, 235, 0.9); width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: #fff;">▶</div>
                         </div>
                     </a>
                 </div>
                 
                 <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #e2e8f0; padding-top: 15px; margin-top: 5px;">
-                    <span style="font-size: 0.85rem; color: #94a3b8;">James 1:21-25</span>
+                    <span id="sermon-scripture" style="font-size:0.85rem;color:#94a3b8;"> Loading...</span>
                     <a href="https://www.youtube.com/@LivingWatersCommunityChurch/videos" target="_blank" class="btn-media-action" style="margin: 0;">View Full Sermons on YouTube &rarr;</a>
                 </div>
             </div>
@@ -209,27 +194,9 @@
     </main>
 
     <!-- GLOBAL FOOTER -->
-    <footer class="global-footer">
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h4>Living Waters</h4>
-                <p>Serving God, Loving People, Changing Lives.</p>
-            </div>
-            <div class="footer-col">
-                <h4>Gathering Times</h4>
-                <p>Sunday School: 9:00 AM</p>
-                <p>Sunday Worship: 10:30 AM</p>
-                <p>Wednesday Bible Study: 5:00 PM</p>
-            </div>
-            <div class="footer-col">
-                <h4>Mailing Address</h4>
-                <p>PO Box 1125<br>Oak Grove, KY 42262</p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Living Waters Community Church. All rights reserved.</p>
-        </div>
-    </footer>
+    <div id="global-footer"></div>
+    
+    <script src="assets/JS/footer.js"></script> 
     
    <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -277,5 +244,7 @@
         }
     });
 </script>
+    <script src="assets/JS/ticker.js"></script>
+    <script src="assets/JS/latest-sermon.js"></script>
 </body>
 </html>
