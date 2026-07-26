@@ -232,16 +232,35 @@
                     });
                 })
                 .catch(err => console.error('Error fetching members:', err));
-        } else {
-            // 3. IF NOT LOGGED IN: Show the gate (the login button)
-            memberList.innerHTML = `
-                <div style="padding: 40px; background: #f8fafc; border: 2px dashed #cbd5e1; border-radius: 12px;">
-                    <h3>Members Only</h3>
-                    <p>This directory is private. Please sign in to view your church family.</p>
-                    <a href="login.html" class="signin-btn" style="display:inline-block; margin-top:10px;">Sign In</a>
-                </div>
-            `;
-        }
+       else {
+    // IF NOT LOGGED IN: Show the gate (the login button)
+    memberList.innerHTML = `
+        <div style="
+            display:flex;
+            justify-content:center;
+            width:100%;
+        ">
+            <div style="
+                max-width:600px;
+                width:100%;
+                padding:40px;
+                background:#f8fafc;
+                border:2px dashed #cbd5e1;
+                border-radius:12px;
+                text-align:center;
+                box-sizing:border-box;
+            ">
+                <h3>Members Only</h3>
+                <p>This directory is private. Please sign in to view your church family.</p>
+                <a href="login.html"
+                   class="signin-btn"
+                   style="display:inline-block; margin-top:15px;">
+                    Sign In
+                </a>
+            </div>
+        </div>
+    `;
+}
     });
 </script>
     <script src="assets/JS/ticker.js"></script>
