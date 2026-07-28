@@ -51,21 +51,25 @@ async function getLatestVideo(playlistId) {
         }
     );
 
-    return videoResponse.data.items[0].snippet;
+    return {
+        id: videoId,
+        ...videoResponse.data.items[0].snippet
+    };
 }
-
 async function updateSermon(){
 
     const uploads = await getUploadsPlaylist();
 
     const video = await getLatestVideo(uploads);
 
-    const descriptionLines = video.description
+    const descriptionLines = (video.description || "")
     .trim()
     .split("\n")
     .filter(line => line.trim() !== "");
 
-const scripture = descriptionLines[descriptionLines.length - 1];
+const scripture = descriptionLines.length
+    ? descriptionLines[descriptionLines.length - 1]
+    : "";
 
 
     const sermon = {
@@ -73,7 +77,7 @@ const scripture = descriptionLines[descriptionLines.length - 1];
     title: video.title,
 
     url:
-    `https://www.youtube.com/watch?v=${video.resourceId.videoId}`,
+    `https://www.youtube.com/watch?v=${video.Id}`,
 
     thumbnail:
     video.thumbnails.high.url,
