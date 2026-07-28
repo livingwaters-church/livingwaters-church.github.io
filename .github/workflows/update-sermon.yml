@@ -27,7 +27,7 @@ jobs:
 
       - name: Update Sermon JSON
         env:
-          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          YOUTUBE_API_KEY: ${{ secrets.AIzaSyB5cUA0jVvPoNprmzSq-E-X5EeKXDBl4p8 }}
           CHANNEL_ID: UC0EqfrAc5-Om4Jcu8V6X0Kw
         run: node scripts/update-sermon.js
 
