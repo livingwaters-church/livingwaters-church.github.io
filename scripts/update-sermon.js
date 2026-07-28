@@ -53,7 +53,7 @@ async function getLatestVideo(playlistId) {
 
     return {
         id: videoId,
-        ...videoResponse.data.items[0].snippet
+        snippet: videoResponse.data.items[0].snippet
     };
 }
 async function updateSermon(){
@@ -62,7 +62,7 @@ async function updateSermon(){
 
     const video = await getLatestVideo(uploads);
 
-    const descriptionLines = (video.description || "")
+    const descriptionLines = (video.snippet.description || "")
     .trim()
     .split("\n")
     .filter(line => line.trim() !== "");
@@ -74,16 +74,16 @@ const scripture = descriptionLines.length
 
     const sermon = {
 
-    title: video.title,
+    title: video.snippet.title,
 
     url:
-    `https://www.youtube.com/watch?v=${video.Id}`,
+    `https://www.youtube.com/watch?v=${video.id}`,
 
     thumbnail:
-    video.thumbnails.high.url,
+    video.snippet.thumbnails.high.url,
 
     published:
-    new Date(video.publishedAt)
+    new Date(video.snippet.publishedAt)
     .toLocaleDateString("en-US"),
 
     scripture: scripture
