@@ -60,23 +60,31 @@ async function updateSermon(){
 
     const video = await getLatestVideo(uploads);
 
+    const descriptionLines = video.description
+    .trim()
+    .split("\n")
+    .filter(line => line.trim() !== "");
+
+const scripture = descriptionLines[descriptionLines.length - 1];
+
 
     const sermon = {
 
-        title: video.title,
+    title: video.title,
 
-        url:
-        `https://www.youtube.com/watch?v=${video.resourceId.videoId}`,
+    url:
+    `https://www.youtube.com/watch?v=${video.resourceId.videoId}`,
 
-        thumbnail:
-        video.thumbnails.high.url,
+    thumbnail:
+    video.thumbnails.high.url,
 
-        published:
-        new Date(video.publishedAt)
-        .toLocaleDateString("en-US")
+    published:
+    new Date(video.publishedAt)
+    .toLocaleDateString("en-US"),
 
-    };
+    scripture: scripture
 
+};
 
     fs.writeFileSync(
         "data/latest-sermon.json",
