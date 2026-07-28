@@ -38,9 +38,21 @@ async function getLatestVideo(playlistId) {
         }
     );
 
-    return response.data.items[0].snippet;
-}
+    const videoId = response.data.items[0].snippet.resourceId.videoId;
 
+    const videoResponse = await axios.get(
+        "https://www.googleapis.com/youtube/v3/videos",
+        {
+            params:{
+                part:"snippet",
+                id: videoId,
+                key: API_KEY
+            }
+        }
+    );
+
+    return videoResponse.data.items[0].snippet;
+}
 
 async function updateSermon(){
 
