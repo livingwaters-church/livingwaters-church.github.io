@@ -544,11 +544,10 @@ html {
     padding: 35px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 12px;
     box-shadow: var(--card-shadow);
     transition: var(--transition-smooth);
 }
-
 .ministry-card:hover {
     transform: translateY(-4px);
     box-shadow: var(--card-hover-shadow);
@@ -575,7 +574,7 @@ html {
     font-size: 0.95rem;
     color: var(--text-muted);
     line-height: 1.6;
-    margin-bottom: 25px;
+    margin-bottom: 0px;
 }
 
 /* Secondary Connection Buttons */
