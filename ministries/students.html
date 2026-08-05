@@ -28,7 +28,6 @@
                 <li><a href="guestbook.html" class="nav-btn btn-nav-guest">Guest</a></li>
                 <li><a href="login.html" class="nav-btn btn-nav-sign-in" style="background: #38bdf8; color: #0f172a; padding: 10px 15px; border-radius: 6px; text-decoration: none; font-weight: 700;">Sign In</a></li>
             </ul>
-            </ul>
         </nav>
     </header>
 
@@ -70,12 +69,50 @@
                     <p><strong>Tuesday Nights (5:00 PM):</strong> The main youth gathering! Mid-week services feature dynamic games, corporate worship, practical messages, and small group circles.</p>
                 </div>
 
-                <h4 style="color: var(--primary-blue); margin: 25px 0 15px 0;">Student Life & Activities</h4>
-                <!-- Image grid placeholder -->
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px;">
-                    <div class="media-placeholder-box" style="padding: 30px 10px; margin-bottom: 0;"><span class="icon-placeholder">🍕</span><p>Youth Nights</p></div>
-                    <div class="media-placeholder-box" style="padding: 30px 10px; margin-bottom: 0;"><span class="icon-placeholder">⛺</span><p>Camp & Retreats</p></div>
-                    <div class="media-placeholder-box" style="padding: 30px 10px; margin-bottom: 0;"><span class="icon-placeholder">🛠️</span><p>Service Projects</p></div>
+                <h4 style="color: var(--primary-blue); margin: 25px 0 15px 0;">Recent Activity Cards</h4>
+                
+                <!-- Recent Activity Cards Grid -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
+                    
+                    <!-- Card 1: Youth Nights -->
+                    <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); display: flex; flex-direction: column;">
+                        <div style="height: 140px; background: #cbd5e1; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                            <!-- Replace src with your actual thumbnail path -->
+                            <img src="../assets/images/youth-nights-thumb.jpg" alt="Youth Nights" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <span style="display: none; font-size: 2rem;">🍕</span>
+                        </div>
+                        <div style="padding: 15px; display: flex; flex-direction: column; flex-grow: 1;">
+                            <h5 style="margin: 0 0 8px 0; font-size: 1.1rem; color: #0f172a;">Mid-Week Youth Nights</h5>
+                            <p style="margin: 0; font-size: 0.9rem; color: #475569; line-height: 1.4;">High-energy games, powerful worship, and relevant messages every Tuesday night.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Camp & Retreats -->
+                    <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); display: flex; flex-direction: column;">
+                        <div style="height: 140px; background: #cbd5e1; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                            <!-- Replace src with your actual thumbnail path -->
+                            <img src="../assets/images/retreats-thumb.jpg" alt="Camp & Retreats" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <span style="display: none; font-size: 2rem;">⛺</span>
+                        </div>
+                        <div style="padding: 15px; display: flex; flex-direction: column; flex-grow: 1;">
+                            <h5 style="margin: 0 0 8px 0; font-size: 1.1rem; color: #0f172a;">Summer Camp & Retreats</h5>
+                            <p style="margin: 0; font-size: 0.9rem; color: #475569; line-height: 1.4;">Unforgettable weekend getaways packed with outdoor adventures and deep spiritual growth.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Service Projects -->
+                    <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); display: flex; flex-direction: column;">
+                        <div style="height: 140px; background: #cbd5e1; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                            <!-- Replace src with your actual thumbnail path -->
+                            <img src="../assets/images/service-thumb.jpg" alt="Service Projects" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <span style="display: none; font-size: 2rem;">🛠️</span>
+                        </div>
+                        <div style="padding: 15px; display: flex; flex-direction: column; flex-grow: 1;">
+                            <h5 style="margin: 0 0 8px 0; font-size: 1.1rem; color: #0f172a;">Community Outreach</h5>
+                            <p style="margin: 0; font-size: 0.9rem; color: #475569; line-height: 1.4;">Putting faith into action by serving local families and neighborhood mission projects.</p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
