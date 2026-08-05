@@ -51,82 +51,106 @@
         <div></div>
     </section>
         
-    <main class="media-container">
+    <main class="media-container" style="max-width: 1200px; margin: 0 auto; padding: 40px 20px;">
         <!-- Back Link Navigation Block -->
         <p style="margin-bottom: 30px;"><a href="index.html" style="color: var(--accent-blue); text-decoration: none; font-weight: 600;">&larr; Back to All Ministries</a></p>
 
         <!-- TWO COLUMN DETAILS LAYOUT -->
-        <div class="media-split-row">
+        <div class="media-split-row" style="display: flex; gap: 40px; flex-wrap: wrap;">
             
             <!-- Left Column: Core Program Details & Weekly Schedule -->
-            <div class="media-panel" style="flex: 2;">
+            <div class="media-panel" style="flex: 2; min-width: 300px;">
                 <h3>What We Are About</h3>
                 <p>Our student ministry is a high-energy environment built specifically for middle and high school students. We tackle real-world topics through biblical teaching, cultivate deep discussions in small groups, and coordinate regular fun events, retreats, and service opportunities.</p>
                 
                 <h4 style="color: var(--primary-blue); margin: 25px 0 10px 0;">Weekly Gathering Times</h4>
-                <div class="media-placeholder-box" style="text-align: left; align-items: flex-start; padding: 25px; background-color: var(--bg-light);">
+                <div class="media-placeholder-box" style="text-align: left; align-items: flex-start; padding: 25px; background-color: var(--bg-light); border-radius: 8px;">
                     <p style="margin-bottom: 10px;"><strong>Sunday Mornings (09:00 AM):</strong> Youth meet in the annex building.</p>
-                    <p><strong>Tuesday Nights (5:00 PM):</strong> The main youth gathering! Mid-week services feature dynamic games, corporate worship, practical messages, and small group circles.</p>
-                </div>
-
-                <h4 style="color: var(--primary-blue); margin: 25px 0 15px 0;">Recent Activity Cards</h4>
-                
-                <!-- Recent Activity Cards Grid -->
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
-                    
-                    <!-- Card 1: Youth Nights -->
-                    <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); display: flex; flex-direction: column;">
-                        <div style="height: 140px; background: #cbd5e1; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-                            <!-- Replace src with your actual thumbnail path -->
-                            <img src="../assets/images/youth-nights-thumb.jpg" alt="Youth Nights" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                            <span style="display: none; font-size: 2rem;">🍕</span>
-                        </div>
-                        <div style="padding: 15px; display: flex; flex-direction: column; flex-grow: 1;">
-                            <h5 style="margin: 0 0 8px 0; font-size: 1.1rem; color: #0f172a;">Mid-Week Youth Nights</h5>
-                            <p style="margin: 0; font-size: 0.9rem; color: #475569; line-height: 1.4;">High-energy games, powerful worship, and relevant messages every Tuesday night.</p>
-                        </div>
-                    </div>
-
-                    <!-- Card 2: Camp & Retreats -->
-                    <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); display: flex; flex-direction: column;">
-                        <div style="height: 140px; background: #cbd5e1; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-                            <!-- Replace src with your actual thumbnail path -->
-                            <img src="../assets/images/retreats-thumb.jpg" alt="Camp & Retreats" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                            <span style="display: none; font-size: 2rem;">⛺</span>
-                        </div>
-                        <div style="padding: 15px; display: flex; flex-direction: column; flex-grow: 1;">
-                            <h5 style="margin: 0 0 8px 0; font-size: 1.1rem; color: #0f172a;">Summer Camp & Retreats</h5>
-                            <p style="margin: 0; font-size: 0.9rem; color: #475569; line-height: 1.4;">Unforgettable weekend getaways packed with outdoor adventures and deep spiritual growth.</p>
-                        </div>
-                    </div>
-
-                    <!-- Card 3: Service Projects -->
-                    <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); display: flex; flex-direction: column;">
-                        <div style="height: 140px; background: #cbd5e1; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-                            <!-- Replace src with your actual thumbnail path -->
-                            <img src="../assets/images/service-thumb.jpg" alt="Service Projects" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                            <span style="display: none; font-size: 2rem;">🛠️</span>
-                        </div>
-                        <div style="padding: 15px; display: flex; flex-direction: column; flex-grow: 1;">
-                            <h5 style="margin: 0 0 8px 0; font-size: 1.1rem; color: #0f172a;">Community Outreach</h5>
-                            <p style="margin: 0; font-size: 0.9rem; color: #475569; line-height: 1.4;">Putting faith into action by serving local families and neighborhood mission projects.</p>
-                        </div>
-                    </div>
-
+                    <p style="margin: 0;"><strong>Tuesday Nights (5:00 PM):</strong> The main youth gathering! Mid-week services feature dynamic games, corporate worship, practical messages, and small group circles.</p>
                 </div>
             </div>
 
             <!-- Right Column: Ministry Leader & Action Sidebar -->
-            <div class="media-panel" style="flex: 1; text-align: center; justify-content: flex-start;">
-                <div class="staff-photo-placeholder" style="margin-top: 10px;">👤</div>
-                <h4>Ministry Leader</h4>
-                <span class="staff-role" style="margin-bottom: 10px;">Student Director</span>
-                <p style="font-size: 0.9rem; margin-bottom: 25px;">Want to get a middle or high schooler plugged in, ask about upcoming retreat registration, or join our leader team?</p>
+            <div class="media-panel" style="flex: 1; min-width: 250px; text-align: center; display: flex; flex-direction: column; align-items: center; background: #f8fafc; padding: 25px; border-radius: 8px; border: 1px solid #e2e8f0;">
+                <div class="staff-photo-placeholder" style="font-size: 3rem; margin-top: 10px;">👤</div>
+                <h4 style="margin: 10px 0 5px 0;">Ministry Leader</h4>
+                <span class="staff-role" style="color: #64748b; font-size: 0.9rem; margin-bottom: 10px; display: block;">Student Director</span>
+                <p style="font-size: 0.9rem; margin-bottom: 25px; color: #475569;">Want to get a middle or high schooler plugged in, ask about upcoming retreat registration, or join our leader team?</p>
                 
-                <a href="mailto:office@livingwaterschurch.org?subject=Student Ministry Inquiry" class="btn-media-action" style="width: 100%;">Email the Director</a>
+                <a href="mailto:office@livingwaterschurch.org?subject=Student Ministry Inquiry" class="btn-media-action" style="width: 100%; box-sizing: border-box;">Email the Director</a>
             </div>
 
         </div>
+
+        <!-- SECTION: UPCOMING EVENTS -->
+        <div style="margin-top: 60px;">
+            <h2 style="text-align: center; color: #1e293b; font-size: 2.2rem; margin-bottom: 30px; font-weight: 700;">Upcoming Events</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                
+                <!-- Event Card 1 -->
+                <div style="background: #ffffff; border-top: 4px solid #10b981; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); display: flex; flex-direction: column;">
+                    <div style="height: 160px; background: #f1f5f9; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 10px;">
+                        <img src="../assets/images/youth-nights-thumb.jpg" alt="Youth Night" style="max-width: 100%; max-height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <span style="display: none; font-size: 2.5rem;">🍕</span>
+                    </div>
+                    <div style="padding: 20px; text-align: center; display: flex; flex-direction: column; flex-grow: 1;">
+                        <h4 style="margin: 0 0 10px 0; font-size: 1.2rem; color: #0f172a;">Mid-Week Youth Night</h4>
+                        <p style="margin: 0 0 5px 0; font-size: 0.9rem; color: #475569;"><strong>Date:</strong> August 11, 2026</p>
+                        <p style="margin: 0; font-size: 0.9rem; color: #475569;"><strong>Time:</strong> 5:00 PM</p>
+                    </div>
+                </div>
+
+                <!-- Event Card 2 -->
+                <div style="background: #ffffff; border-top: 4px solid #3b82f6; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); display: flex; flex-direction: column;">
+                    <div style="height: 160px; background: #f1f5f9; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 10px;">
+                        <img src="../assets/images/retreats-thumb.jpg" alt="Summer Camp" style="max-width: 100%; max-height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <span style="display: none; font-size: 2.5rem;">⛺</span>
+                    </div>
+                    <div style="padding: 20px; text-align: center; display: flex; flex-direction: column; flex-grow: 1;">
+                        <h4 style="margin: 0 0 10px 0; font-size: 1.2rem; color: #0f172a;">End of Summer Bash</h4>
+                        <p style="margin: 0 0 5px 0; font-size: 0.9rem; color: #475569;"><strong>Date:</strong> August 21 - 23, 2026</p>
+                        <p style="margin: 0; font-size: 0.9rem; color: #475569;"><strong>Time:</strong> All Weekend</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- SECTION: PAST EVENTS -->
+        <div style="margin-top: 60px; margin-bottom: 40px;">
+            <h2 style="text-align: center; color: #64748b; font-size: 2rem; margin-bottom: 30px; font-weight: 700;">Past Events</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; opacity: 0.85;">
+                
+                <!-- Past Event Card 1 -->
+                <div style="background: #f8fafc; border-top: 4px solid #94a3b8; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.02); display: flex; flex-direction: column;">
+                    <div style="height: 160px; background: #e2e8f0; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 10px; filter: grayscale(40%);">
+                        <img src="../assets/images/service-thumb.jpg" alt="Car Wash Fundraiser" style="max-width: 100%; max-height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <span style="display: none; font-size: 2.5rem;">🚗</span>
+                    </div>
+                    <div style="padding: 20px; text-align: center; display: flex; flex-direction: column; flex-grow: 1;">
+                        <h4 style="margin: 0 0 10px 0; font-size: 1.2rem; color: #334155;">Water Ballon Fight</h4>
+                        <p style="margin: 0 0 5px 0; font-size: 0.9rem; color: #64748b;"><strong>Date:</strong> August 1, 2026</p>
+                        <p style="margin: 0; font-size: 0.9rem; color: #64748b;">Thank you to everyone who supported our students!</p>
+                    </div>
+                </div>
+
+                <!-- Past Event Card 2 -->
+                <div style="background: #f8fafc; border-top: 4px solid #94a3b8; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.02); display: flex; flex-direction: column;">
+                    <div style="height: 160px; background: #e2e8f0; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 10px; filter: grayscale(40%);">
+                        <img src="../assets/images/vbs-thumb.jpg" alt="VBS Youth Night" style="max-width: 100%; max-height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <span style="display: none; font-size: 2.5rem;">🎉</span>
+                    </div>
+                    <div style="padding: 20px; text-align: center; display: flex; flex-direction: column; flex-grow: 1;">
+                        <h4 style="margin: 0 0 10px 0; font-size: 1.2rem; color: #334155;">VBS Youth Volunteer Week</h4>
+                        <p style="margin: 0 0 5px 0; font-size: 0.9rem; color: #64748b;"><strong>Date:</strong> June 10 - 14, 2026</p>
+                        <p style="margin: 0; font-size: 0.9rem; color: #64748b;">Teens served as group leaders for the kids program.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>         
     </main>
 
     <!-- GLOBAL FOOTER -->
