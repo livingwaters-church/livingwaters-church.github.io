@@ -990,7 +990,7 @@ html {
 .ticker-content {
     display: flex;
     white-space: nowrap;
-    animation: marqueeContinuous 105s linear infinite; /* Fixed naming mismatch space */
+    animation: marqueeContinuous 120s linear infinite; /* Fixed naming mismatch space */
 }
 
 .ticker-item {
