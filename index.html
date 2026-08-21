@@ -153,10 +153,15 @@
             </div>
 
             <!-- Right Panel: Wednesday Rest & Growth -->
-            <div class="media-panel" style="border-left: 5px solid #0284c7;">
+            <div class="media-panel" style="border-left: 5px solid #0284c7; display: flex; flex-direction: column;">
                 <span class="panel-badge" style="background-color: #e0f2fe; color: #0369a1;">Tuesdays</span>
                 <h3>Midweek Refuel</h3>
-                <p>Break up the noise of the busy work week with an intentional night of community prayer, biblical study, and discussion.</p>
+                
+                <!-- Content row with text and thumbnail -->
+                <div style="display: flex; gap: 15px; align-items: flex-start; margin: 10px 0;">
+                    <p style="margin: 0; flex: 1;">Break up the noise of the busy work week with an intentional night of community prayer, biblical study, and discussion.</p>
+                    <img src="images/bible-study.jpg" alt="Bible Study Thumbnail" style="width: 85px; height: 85px; object-fit: cover; border-radius: 6px; flex-shrink: 0; border: 1px solid #cbd5e1;">
+                </div>
                 
                 <div style="background: var(--bg-light); border-radius: var(--radius-sm); padding: 15px; margin-top: auto;">
                     <div style="display: flex; justify-content: space-between; font-weight: 700; color: #0369a1;">
@@ -164,7 +169,6 @@
                     </div>
                 </div>
             </div>
-        </div>
         
      <!-- UPCOMING EVENTS SECTION -->
         <section class="about-section" style="margin-bottom: 60px;">
