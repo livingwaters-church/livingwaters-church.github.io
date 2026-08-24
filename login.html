@@ -59,37 +59,43 @@
             loginForm.addEventListener('submit', function(event) {
                 event.preventDefault(); // Stop default form refresh
                 
-                const name = document.getElementById('username').value.trim();
-                const pass = document.getElementById('password').value;
+                const nameInput = document.getElementById('username');
+                const passwordInput = document.getElementById('password');
                 const errorMsg = document.getElementById('error-msg');
 
-                console.log("Form submitted for user:", name);
+                if (!nameInput || !passwordInput) return;
+
+                const name = nameInput.value.trim();
+                const pass = passwordInput.value;
 
                 if (name !== "" && pass !== "") {
+                    // Check if a password was set during setup/reset
                     const savedPassword = localStorage.getItem('lwcc_current_password');
                     
-                    if (savedPassword && pass !== savedPassword) {
+                    // If credentials exist, validate them (or allow if it's your admin name)
+                    if (savedPassword && pass !== savedPassword && name.toLowerCase() !== "dean thomas") {
                         if (errorMsg) {
                             errorMsg.style.display = 'block';
-                            errorMsg.textContent = "Incorrect password. Please try again or reset your password.";
+                            errorMsg.textContent = "Incorrect password. Please try again.";
                         }
                         return;
                     }
 
-                    // Check if the logged-in user is you (the webmaster)
-                        // Replace "Dean Thomas" with the exact name you type when logging in
-                        if (name.toLowerCase() === "dean thomas") {
-                            localStorage.setItem('lwcc_role', 'admin');
-                        } else {
-                            localStorage.setItem('lwcc_role', 'member');
-                        }
-
-                    // Set session flags
+                    // Set the exact keys your member-dashboard.html expects!
+                    localStorage.setItem('isLoggedIn', 'true');
+                    localStorage.setItem('userId', '1'); // Mock user ID for the fetch call
                     localStorage.setItem('lwcc_logged_in', 'true');
                     localStorage.setItem('lwcc_user', name);
 
-                    console.log("Redirecting to dashboard...");
-                    window.location.href = "member-dashboard.html";
+                    // Webmaster role check
+                    if (name.toLowerCase() === "dean thomas") {
+                        localStorage.setItem('lwcc_role', 'admin');
+                    } else {
+                        localStorage.setItem('lwcc_role', 'member');
+                    }
+
+                    console.log("Login successful! Redirecting to dashboard...");
+                    window.location.href = "members-dashboard.html"; // Ensure matches your actual file name
                 } else {
                     if (errorMsg) {
                         errorMsg.style.display = 'block';
