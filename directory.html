@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Community Member Directory - Living Waters Community Church</title>
-    <!-- Link to your main stylesheet -->
     <link rel="stylesheet" href="style.css?v=1">
     <style>
         table.member-table { width: 100%; border-collapse: collapse; margin-top: 20px; text-align: left; }
@@ -19,17 +18,15 @@
 </head>
 <body>
 
-    <!-- Global Navigation Header -->
     <div id="global-header"></div>
 
-    <!-- Main Content Section -->
     <main style="padding: 60px 20px; text-align: center; min-height: 60vh;">
-        <div style="max-width: 900px; margin: 0 auto;">
+        <div style="max-width: 1100px; margin: 0 auto;">
             
             <h2 style="color: #1a2b4c; font-size: 2em; margin-bottom: 10px;">Community Member Directory</h2>
-            <p style="color: #555; font-size: 1.1em; margin-bottom: 30px;">Meet the wonderful people that make up our church family.</p>
+            <p style="color: #555; font-size: 1.1em; margin-bottom: 30px;">Manage church records and member security parameters.</p>
 
-            <!-- Regular Visitor View (Shown by default) -->
+            <!-- Regular Visitor View -->
             <div id="public-directory-view" style="border: 2px dashed #cbd5e1; border-radius: 12px; padding: 40px 20px; background-color: #f8fafc;">
                 <h3 style="color: #1e293b; margin-top: 0; font-size: 1.4em;">Members Only</h3>
                 <p style="color: #475569; margin-bottom: 20px;">This directory is private. Please sign in to view your church family.</p>
@@ -38,26 +35,26 @@
                 </a>
             </div>
 
-            <!-- Admin / Webmaster Management View (Hidden by default) -->
+            <!-- Admin / Webmaster Management View -->
             <div id="admin-directory-view" style="display: none; background: #ffffff; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: left;">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 15px;">
-                    <h3 style="color: #0f172a; margin: 0;">🛡️ Webmaster Member & Security Management</h3>
-                    <input type="text" id="searchMember" placeholder="Search members..." style="padding: 8px 12px; border: 1px solid #cbd5e1; border-radius: 6px; width: 250px;">
+                    <h3 style="color: #0f172a; margin: 0;">🛡️ Webmaster Database Control Panel</h3>
+                    <input type="text" id="searchMember" placeholder="Search by name, phone, or email..." style="padding: 8px 12px; border: 1px solid #cbd5e1; border-radius: 6px; width: 300px;">
                 </div>
 
-                <div style="overflow-x: auto;">
+                <div style="overflow-x: auto; max-height: 600px;">
                     <table class="member-table">
                         <thead>
                             <tr>
-                                <th>Member Name</th>
-                                <th>Phone Number</th>
-                                <th>Email Address</th>
+                                <th>Name</th>
+                                <th>Cell Phone</th>
+                                <th>Personal Email</th>
                                 <th>Secret PIN</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody id="memberTableBody">
-                            <!-- Dynamic rows load here -->
+                            <tr><td colspan="5" style="text-align: center;">Loading member database...</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -69,14 +66,16 @@
         </div>
     </main>
 
-    <!-- Global Footer Container -->
     <div id="global-footer"></div>
 
-    <!-- Scripts for Header and Footer -->
     <script src="footer.js"></script>
     
+    <!-- Include PapaParse library to automatically parse the CSV file safely in the browser -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+
     <script>
-        // Check if the logged-in user is an admin
+        let membersData = [];
+
         document.addEventListener("DOMContentLoaded", () => {
             const userRole = localStorage.getItem('lwcc_role');
             const publicView = document.getElementById('public-directory-view');
@@ -85,25 +84,40 @@
             if (userRole === 'admin') {
                 publicView.style.display = 'none';
                 adminView.style.display = 'block';
-                loadAdminDirectory();
+                fetchCSVData();
             }
         });
 
-        // Mock data and management functions for admin view
-        let membersData = [
-            { id: 1, name: "Dean Thomas", phone: "(931) 555-0192", email: "dean@example.com", pin: "4321" },
-            { id: 2, name: "Jane Doe", phone: "(931) 555-8431", email: "jane.doe@example.com", pin: "1234" },
-            { id: 3, name: "Robert Smith", phone: "(931) 555-9822", email: "rsmith@example.com", pin: "9988" }
-        ];
-
-        function loadAdminDirectory() {
-            renderTable(membersData);
+        function fetchCSVData() {
+            // Loads your LWCC_Golden_Master.csv file directly from your root repository
+            Papa.parse("LWCC_Golden_Master.csv", {
+                download: true,
+                header: true,
+                skipEmptyLines: true,
+                complete: function(results) {
+                    // Map CSV columns cleanly into a local array with unique index identifiers
+                    membersData = results.data.map((row, index) => ({
+                        id: index,
+                        firstName: row['First Name'] || '',
+                        lastName: row['Last Name'] || '',
+                        phone: row['Cell Phone'] || 'N/A',
+                        email: row['Personal Email'] || 'N/A',
+                        pin: localStorage.getItem(`lwcc_pin_${index}`) || '1234' // Default or custom stored pin
+                    }));
+                    renderTable(membersData);
+                },
+                error: function(err) {
+                    console.error("Error loading CSV:", err);
+                    document.getElementById('memberTableBody').innerHTML = `<tr><td colspan="5" style="text-align: center; color: red;">Error loading LWCC_Golden_Master.csv. Check file path.</td></tr>`;
+                }
+            });
 
             document.getElementById('searchMember').addEventListener('input', function(e) {
                 const term = e.target.value.toLowerCase();
                 const filtered = membersData.filter(m => 
-                    m.name.toLowerCase().includes(term) || 
-                    m.email.toLowerCase().includes(term) ||
+                    m.firstName.toLowerCase().includes(term) || 
+                    m.lastName.toLowerCase().includes(term) || 
+                    m.email.toLowerCase().includes(term) || 
                     m.phone.includes(term)
                 );
                 renderTable(filtered);
@@ -115,14 +129,15 @@
             tbody.innerHTML = "";
 
             if (data.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: #64748b;">No members found.</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: #64748b;">No members found matching your search.</td></tr>`;
                 return;
             }
 
             data.forEach(member => {
+                const fullName = `${member.firstName} ${member.lastName}`.trim();
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
-                    <td><strong>${member.name}</strong></td>
+                    <td><strong>${fullName}</strong></td>
                     <td>${member.phone}</td>
                     <td>${member.email}</td>
                     <td><code>••••</code></td>
@@ -139,14 +154,15 @@
             const member = membersData.find(m => m.id === id);
             if (!member) return;
 
-            const newPhone = prompt(`Update phone number for ${member.name}:`, member.phone);
-            const newEmail = prompt(`Update email for ${member.name}:`, member.email);
+            const fullName = `${member.firstName} ${member.lastName}`;
+            const newPhone = prompt(`Update cell phone for ${fullName}:`, member.phone);
+            const newEmail = prompt(`Update personal email for ${fullName}:`, member.email);
 
             if (newPhone !== null && newEmail !== null) {
                 member.phone = newPhone.trim();
                 member.email = newEmail.trim();
                 renderTable(membersData);
-                alert("Member information updated successfully!");
+                alert("Member contact details updated locally for this session!");
             }
         }
 
@@ -154,11 +170,13 @@
             const member = membersData.find(m => m.id === id);
             if (!member) return;
 
-            const newPin = prompt(`Enter a new Secret PIN for ${member.name}:`);
+            const fullName = `${member.firstName} ${member.lastName}`;
+            const newPin = prompt(`Enter a new Secret PIN for ${fullName}:`);
             if (newPin !== null) {
                 if (newPin.trim().length >= 4) {
                     member.pin = newPin.trim();
-                    alert(`Secret PIN successfully reset for ${member.name}.`);
+                    localStorage.setItem(`lwcc_pin_${id}`, member.pin);
+                    alert(`Secret PIN successfully reset for ${fullName}.`);
                 } else {
                     alert("PIN must be at least 4 digits/characters.");
                 }
