@@ -1281,9 +1281,9 @@ html {
 
 .webmaster-actions {
     display: flex;
-    gap: 12px;
+    gap: 15px;
     flex-wrap: wrap;
-    margin-top: 20px;
+    margin-top: 25px;
 }
 
 .btn-webmaster {
