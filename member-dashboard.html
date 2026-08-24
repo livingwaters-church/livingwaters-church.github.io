@@ -257,6 +257,18 @@ if(loggedIn !== "true"){
 const userId = localStorage.getItem("userId");
 
 // --------------------------------
+// WEBMASTER ROLE CHECK
+// --------------------------------
+document.addEventListener("DOMContentLoaded", () => {
+    const userRole = localStorage.getItem('lwcc_role');
+    const webmasterPanel = document.getElementById('webmaster-panel');
+    
+    if (userRole === 'admin' && webmasterPanel) {
+        webmasterPanel.style.display = 'block';
+    }
+});
+
+// --------------------------------
 // LOAD MEMBER PROFILE
 // --------------------------------
 fetch(`http://localhost:3000/api/members/${userId}`)
