@@ -59,10 +59,21 @@
         const pass = document.getElementById('password').value;
         const errorMsg = document.getElementById('error-msg');
 
-        // Simple frontend validation check 
-        // (You can expand this or match against a stored list/CSV data if needed)
+        // Check if name and password are provided
         if (name !== "" && pass !== "") {
-            // Optional: Store session status locally so the dashboard knows they are logged in
+            
+            // Optional: If you want to simulate a minimum password check or match saved data:
+            // Let's store the registered password during reset so login can verify it
+            const savedPassword = localStorage.getItem('lwcc_current_password');
+            
+            // If a password was previously set/reset, require it to match (otherwise allow for testing)
+            if (savedPassword && pass !== savedPassword) {
+                errorMsg.style.display = 'block';
+                errorMsg.textContent = "Incorrect password. Please try again or reset your password.";
+                return;
+            }
+
+            // Set session flags
             localStorage.setItem('lwcc_logged_in', 'true');
             localStorage.setItem('lwcc_user', name);
 
