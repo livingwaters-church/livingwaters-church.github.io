@@ -20,11 +20,14 @@
     <div class="card">
         <h3>Returning Members</h3>
         <p>Welcome back! Sign in to access the community directory and update your information.</p>
-        <form action="/login" method="POST">
-            <input type="text" name="name" placeholder="First and Last Name" required style="width:100%; padding:10px; margin-bottom:10px;">
-            <input type="password" name="password" placeholder="Password" required style="width:100%; padding:10px; margin-bottom:10px;">
+        
+        <!-- Add an id to the form and remove the server action -->
+        <form id="loginForm" onsubmit="handleLogin(event)">
+            <input type="text" id="username" name="name" placeholder="First and Last Name" required style="width:100%; padding:10px; margin-bottom:10px;">
+            <input type="password" id="password" name="password" placeholder="Password" required style="width:100%; padding:10px; margin-bottom:10px;">
             <button type="submit" class="btn-action" style="background:#0f172a; color:#fff; border:none;">Sign In</button>
         </form>
+        <p id="error-msg" style="color: red; font-size: 0.85em; margin-top: 10px; display: none;"></p>
     </div>
 
     <!-- Card 2: First-Time Members -->
@@ -42,6 +45,28 @@
         <a href="guestbook.html" class="btn-action" style="background:#e2e8f0; color:#475569; margin-top:10px;">Sign Guestbook (Optional)</a>
     </div>
 </div>
+<script>
+    function handleLogin(event) {
+        event.preventDefault(); // Stop the form from traditional submission
+        
+        const name = document.getElementById('username').value.trim();
+        const pass = document.getElementById('password').value;
+        const errorMsg = document.getElementById('error-msg');
 
+        // Simple frontend validation check 
+        // (You can expand this or match against a stored list/CSV data if needed)
+        if (name !== "" && pass !== "") {
+            // Optional: Store session status locally so the dashboard knows they are logged in
+            localStorage.setItem('lwcc_logged_in', 'true');
+            localStorage.setItem('lwcc_user', name);
+
+            // Redirect to the member dashboard
+            window.location.href = "member-dashboard.html";
+        } else {
+            errorMsg.style.display = 'block';
+            errorMsg.textContent = "Please enter both name and password.";
+        }
+    }
+</script>
 </body>
 </html>
