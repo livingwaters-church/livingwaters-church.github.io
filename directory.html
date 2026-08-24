@@ -4,28 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Community Member Directory - Living Waters Community Church</title>
-    <!-- Link to your main stylesheet (adjust relative path if needed, e.g., assets/style.css) -->
+    <!-- Link to your main stylesheet -->
     <link rel="stylesheet" href="style.css?v=1">
+    <style>
+        table.member-table { width: 100%; border-collapse: collapse; margin-top: 20px; text-align: left; }
+        table.member-table th, table.member-table td { padding: 12px 15px; border-bottom: 1px solid #e2e8f0; font-size: 0.95rem; }
+        table.member-table th { background: #f8fafc; color: #334155; font-weight: 700; }
+        table.member-table tr:hover { background: #f1f5f9; }
+        .btn-edit { background: #38bdf8; color: #0f172a; border: none; padding: 6px 12px; border-radius: 4px; font-weight: 600; cursor: pointer; margin-right: 5px; }
+        .btn-edit:hover { background: #0ea5e9; }
+        .btn-reset { background: #f59e0b; color: #fff; border: none; padding: 6px 12px; border-radius: 4px; font-weight: 600; cursor: pointer; }
+        .btn-reset:hover { background: #d97706; }
+    </style>
 </head>
 <body>
 
-    <!-- Global Navigation Header (Assuming you use a script or shared layout for this, otherwise include your nav HTML here) -->
+    <!-- Global Navigation Header -->
     <div id="global-header"></div>
 
     <!-- Main Content Section -->
     <main style="padding: 60px 20px; text-align: center; min-height: 60vh;">
-        <div style="max-width: 700px; margin: 0 auto;">
+        <div style="max-width: 900px; margin: 0 auto;">
             
             <h2 style="color: #1a2b4c; font-size: 2em; margin-bottom: 10px;">Community Member Directory</h2>
             <p style="color: #555; font-size: 1.1em; margin-bottom: 30px;">Meet the wonderful people that make up our church family.</p>
 
-            <!-- Members Only Box -->
-            <div style="border: 2px dashed #cbd5e1; border-radius: 12px; padding: 40px 20px; background-color: #f8fafc;">
+            <!-- Regular Visitor View (Shown by default) -->
+            <div id="public-directory-view" style="border: 2px dashed #cbd5e1; border-radius: 12px; padding: 40px 20px; background-color: #f8fafc;">
                 <h3 style="color: #1e293b; margin-top: 0; font-size: 1.4em;">Members Only</h3>
                 <p style="color: #475569; margin-bottom: 20px;">This directory is private. Please sign in to view your church family.</p>
                 <a href="login.html" style="display: inline-block; background-color: #0284c7; color: white; padding: 10px 25px; text-decoration: none; border-radius: 6px; font-weight: bold;">
                     Sign In
                 </a>
+            </div>
+
+            <!-- Admin / Webmaster Management View (Hidden by default) -->
+            <div id="admin-directory-view" style="display: none; background: #ffffff; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: left;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 15px;">
+                    <h3 style="color: #0f172a; margin: 0;">🛡️ Webmaster Member & Security Management</h3>
+                    <input type="text" id="searchMember" placeholder="Search members..." style="padding: 8px 12px; border: 1px solid #cbd5e1; border-radius: 6px; width: 250px;">
+                </div>
+
+                <div style="overflow-x: auto;">
+                    <table class="member-table">
+                        <thead>
+                            <tr>
+                                <th>Member Name</th>
+                                <th>Phone Number</th>
+                                <th>Email Address</th>
+                                <th>Secret PIN</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="memberTableBody">
+                            <!-- Dynamic rows load here -->
+                        </tbody>
+                    </table>
+                </div>
+                <div style="margin-top: 20px;">
+                    <a href="member-dashboard.html" style="color: #0284c7; text-decoration: none; font-weight: 600;">&larr; Back to My Dashboard</a>
+                </div>
             </div>
 
         </div>
@@ -36,5 +74,96 @@
 
     <!-- Scripts for Header and Footer -->
     <script src="footer.js"></script>
+    
+    <script>
+        // Check if the logged-in user is an admin
+        document.addEventListener("DOMContentLoaded", () => {
+            const userRole = localStorage.getItem('lwcc_role');
+            const publicView = document.getElementById('public-directory-view');
+            const adminView = document.getElementById('admin-directory-view');
+
+            if (userRole === 'admin') {
+                publicView.style.display = 'none';
+                adminView.style.display = 'block';
+                loadAdminDirectory();
+            }
+        });
+
+        // Mock data and management functions for admin view
+        let membersData = [
+            { id: 1, name: "Dean Thomas", phone: "(931) 555-0192", email: "dean@example.com", pin: "4321" },
+            { id: 2, name: "Jane Doe", phone: "(931) 555-8431", email: "jane.doe@example.com", pin: "1234" },
+            { id: 3, name: "Robert Smith", phone: "(931) 555-9822", email: "rsmith@example.com", pin: "9988" }
+        ];
+
+        function loadAdminDirectory() {
+            renderTable(membersData);
+
+            document.getElementById('searchMember').addEventListener('input', function(e) {
+                const term = e.target.value.toLowerCase();
+                const filtered = membersData.filter(m => 
+                    m.name.toLowerCase().includes(term) || 
+                    m.email.toLowerCase().includes(term) ||
+                    m.phone.includes(term)
+                );
+                renderTable(filtered);
+            });
+        }
+
+        function renderTable(data) {
+            const tbody = document.getElementById('memberTableBody');
+            tbody.innerHTML = "";
+
+            if (data.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: #64748b;">No members found.</td></tr>`;
+                return;
+            }
+
+            data.forEach(member => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td><strong>${member.name}</strong></td>
+                    <td>${member.phone}</td>
+                    <td>${member.email}</td>
+                    <td><code>••••</code></td>
+                    <td>
+                        <button class="btn-edit" onclick="editMember(${member.id})">Edit Info</button>
+                        <button class="btn-reset" onclick="resetPin(${member.id})">Reset PIN</button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function editMember(id) {
+            const member = membersData.find(m => m.id === id);
+            if (!member) return;
+
+            const newPhone = prompt(`Update phone number for ${member.name}:`, member.phone);
+            const newEmail = prompt(`Update email for ${member.name}:`, member.email);
+
+            if (newPhone !== null && newEmail !== null) {
+                member.phone = newPhone.trim();
+                member.email = newEmail.trim();
+                renderTable(membersData);
+                alert("Member information updated successfully!");
+            }
+        }
+
+        function resetPin(id) {
+            const member = membersData.find(m => m.id === id);
+            if (!member) return;
+
+            const newPin = prompt(`Enter a new Secret PIN for ${member.name}:`);
+            if (newPin !== null) {
+                if (newPin.trim().length >= 4) {
+                    member.pin = newPin.trim();
+                    alert(`Secret PIN successfully reset for ${member.name}.`);
+                } else {
+                    alert("PIN must be at least 4 digits/characters.");
+                }
+            }
+        }
+    </script>
 </body>
 </html>
