@@ -70,9 +70,7 @@
 
     <script src="footer.js"></script>
     
-    <!-- Include PapaParse library to automatically parse the CSV file safely in the browser -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
-
+    <!-- sScript uses SQLite API now -->
     <script>
         let membersData = [];
 
@@ -84,44 +82,69 @@
             if (userRole === 'admin') {
                 publicView.style.display = 'none';
                 adminView.style.display = 'block';
-                fetchCSVData();
+                
+                // Add the status filter dropdown dynamically if it's not already in the HTML header toolbar
+                injectFilterDropdown();
+                
+                fetchMembers();
             }
         });
 
-        function fetchCSVData() {
-            // Loads your LWCC_Golden_Master.csv file directly from your root repository
-            Papa.parse("LWCC_Golden_Master.csv", {
-                download: true,
-                header: true,
-                skipEmptyLines: true,
-                complete: function(results) {
-                    // Map CSV columns cleanly into a local array with unique index identifiers
-                    membersData = results.data.map((row, index) => ({
-                        id: index,
-                        firstName: row['First Name'] || '',
-                        lastName: row['Last Name'] || '',
-                        phone: row['Cell Phone'] || 'N/A',
-                        email: row['Personal Email'] || 'N/A',
-                        pin: localStorage.getItem(`lwcc_pin_${index}`) || '1234' // Default or custom stored pin
+        function injectFilterDropdown() {
+            const headerToolbar = document.querySelector('#admin-directory-view > div > div');
+            if (headerToolbar && !document.getElementById('statusFilter')) {
+                const filterWrapper = document.createElement('div');
+                filterWrapper.innerHTML = `
+                    <label for="statusFilter" style="font-weight: 600; color: #334155; margin-right: 8px;">Filter:</label>
+                    <select id="statusFilter" onchange="fetchMembers()" style="padding: 8px 12px; border: 1px solid #cbd5e1; border-radius: 6px; background: #fff;">
+                        <option value="active" selected>Active Members</option>
+                        <option value="inactive">Inactive / Archived</option>
+                        <option value="">All Members</option>
+                    </select>
+                `;
+                headerToolbar.insertBefore(filterWrapper, headerToolbar.lastElementChild);
+            }
+        }
+
+        function fetchMembers() {
+            const statusSelect = document.getElementById('statusFilter');
+            const status = statusSelect ? statusSelect.value : 'active';
+            const url = status ? `http://localhost:3000/api/members?status=${status}` : 'http://localhost:3000/api/members';
+
+            fetch(url)
+                .then(res => res.json())
+                .then(data => {
+                    // Map SQLite columns to match what the render table expects
+                    membersData = data.map(row => ({
+                        id: row.id,
+                        firstName: row.first_name || '',
+                        lastName: row.last_name || '',
+                        phone: row.phone || 'N/A',
+                        email: row.email || 'N/A',
+                        status: row.status || 'active'
                     }));
                     renderTable(membersData);
-                },
-                error: function(err) {
-                    console.error("Error loading CSV:", err);
-                    document.getElementById('memberTableBody').innerHTML = `<tr><td colspan="5" style="text-align: center; color: red;">Error loading LWCC_Golden_Master.csv. Check file path.</td></tr>`;
-                }
-            });
+                })
+                .catch(err => {
+                    console.error("Error fetching members from server:", err);
+                    document.getElementById('memberTableBody').innerHTML = `<tr><td colspan="5" style="text-align: center; color: red;">Error connecting to SQLite server on port 3000.</td></tr>`;
+                });
 
-            document.getElementById('searchMember').addEventListener('input', function(e) {
-                const term = e.target.value.toLowerCase();
-                const filtered = membersData.filter(m => 
-                    m.firstName.toLowerCase().includes(term) || 
-                    m.lastName.toLowerCase().includes(term) || 
-                    m.email.toLowerCase().includes(term) || 
-                    m.phone.includes(term)
-                );
-                renderTable(filtered);
-            });
+            // Handle local search filtering alongside the status filter
+            const searchInput = document.getElementById('searchMember');
+            if (searchInput && !searchInput.dataset.listenerAdded) {
+                searchInput.dataset.listenerAdded = "true";
+                searchInput.addEventListener('input', function(e) {
+                    const term = e.target.value.toLowerCase();
+                    const filtered = membersData.filter(m => 
+                        m.firstName.toLowerCase().includes(term) || 
+                        m.lastName.toLowerCase().includes(term) || 
+                        m.email.toLowerCase().includes(term) || 
+                        m.phone.includes(term)
+                    );
+                    renderTable(filtered);
+                });
+            }
         }
 
         function renderTable(data) {
@@ -129,25 +152,50 @@
             tbody.innerHTML = "";
 
             if (data.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: #64748b;">No members found matching your search.</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: #64748b;">No members found.</td></tr>`;
                 return;
             }
 
+            data.index = 0;
             data.forEach(member => {
                 const fullName = `${member.firstName} ${member.lastName}`.trim();
                 const tr = document.createElement('tr');
+                
+                // Toggle button label depending on current status
+                const isInactive = member.status === 'inactive';
+                const actionButtonText = isInactive ? 'Restore' : 'Archive';
+                const actionButtonClass = isInactive ? 'btn-edit' : 'btn-reset';
+                const targetStatus = isInactive ? 'active' : 'inactive';
+
                 tr.innerHTML = `
                     <td><strong>${fullName}</strong></td>
                     <td>${member.phone}</td>
                     <td>${member.email}</td>
-                    <td><code>••••</code></td>
+                    <td><span style="font-size: 0.85rem; padding: 3px 8px; border-radius: 4px; background: ${isInactive ? '#fee2e2' : '#dcfce7'}; color: ${isInactive ? '#991b1b' : '#166534'};">${member.status}</span></td>
                     <td>
                         <button class="btn-edit" onclick="editMember(${member.id})">Edit Info</button>
-                        <button class="btn-reset" onclick="resetPin(${member.id})">Reset PIN</button>
+                        <button class="${actionButtonClass}" onclick="toggleStatus(${member.id}, '${targetStatus}')">${actionButtonText}</button>
                     </td>
                 `;
                 tbody.appendChild(tr);
             });
+        }
+
+        function toggleStatus(id, newStatus) {
+            fetch(`http://localhost:3000/api/members/${id}/status`, {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ status: newStatus })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    fetchMembers(); // Refresh the list dynamically!
+                } else {
+                    alert('Failed to update member status.');
+                }
+            })
+            .catch(err => console.error('Error updating status:', err));
         }
 
         function editMember(id) {
@@ -159,29 +207,30 @@
             const newEmail = prompt(`Update personal email for ${fullName}:`, member.email);
 
             if (newPhone !== null && newEmail !== null) {
-                member.phone = newPhone.trim();
-                member.email = newEmail.trim();
-                renderTable(membersData);
-                alert("Member contact details updated locally for this session!");
-            }
-        }
-
-        function resetPin(id) {
-            const member = membersData.find(m => m.id === id);
-            if (!member) return;
-
-            const fullName = `${member.firstName} ${member.lastName}`;
-            const newPin = prompt(`Enter a new Secret PIN for ${fullName}:`);
-            if (newPin !== null) {
-                if (newPin.trim().length >= 4) {
-                    member.pin = newPin.trim();
-                    localStorage.setItem(`lwcc_pin_${id}`, member.pin);
-                    alert(`Secret PIN successfully reset for ${fullName}.`);
-                } else {
-                    alert("PIN must be at least 4 digits/characters.");
-                }
+                // Send update to server backend
+                fetch('http://localhost:3000/api/update-profile', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        id: member.id,
+                        name: fullName,
+                        phone: newPhone.trim(),
+                        email: newEmail.trim()
+                    })
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        fetchMembers();
+                        alert("Member profile successfully updated in the database!");
+                    } else {
+                        alert("Error updating profile on server.");
+                    }
+                })
+                .catch(err => console.error('Error:', err));
             }
         }
     </script>
+    
 </body>
 </html>
