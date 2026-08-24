@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activate Account - Living Waters Community Church</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .setup-container { max-width: 450px; margin: 60px auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border-top: 5px solid #f59e0b; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: bold; color: #0f172a; }
+        .form-group input { width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; box-sizing: border-box; }
+        .btn-action { display: block; width: 100%; padding: 12px; background: #0f172a; color: #fff; border: none; border-radius: 6px; font-weight: 700; cursor: pointer; text-align: center; }
+        .btn-action:hover { background: #1e293b; }
+    </style>
+</head>
+<body>
+
+<nav style="margin-bottom: 20px; text-align: center; padding-top: 20px;">
+    <a href="login.html" style="color: #64748b; text-decoration: none;">&larr; Back to Sign In</a>
+</nav>
+
+<div class="setup-container">
+    <h3 style="color: #0f172a; margin-top: 0;">Activate Your Member Account</h3>
+    <p style="color: #475569; font-size: 0.9em; margin-bottom: 20px;">Enter your details to establish your secure password and access the community portal.</p>
+
+    <form id="setupForm">
+        <div class="form-group">
+            <label for="setupName">First and Last Name</label>
+            <input type="text" id="setupName" required placeholder="e.g. Jane Doe">
+        </div>
+        <div class="form-group">
+            <label for="setupEmail">Email Address or Phone Number</label>
+            <input type="text" id="setupEmail" required placeholder="For verification on file">
+        </div>
+        <div class="form-group">
+            <label for="setupPass">Create New Password</label>
+            <input type="password" id="setupPass" required placeholder="At least 6 characters">
+        </div>
+        <button type="submit" class="btn-action">Activate Account</button>
+    </form>
+
+    <p id="setup-msg" style="color: red; font-size: 0.85em; margin-top: 15px; text-align: center; display: none;"></p>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const setupForm = document.getElementById('setupForm');
+
+        if (setupForm) {
+            setupForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                const name = document.getElementById('setupName').value.trim();
+                const contact = document.getElementById('setupEmail').value.trim();
+                const pass = document.getElementById('setupPass').value;
+                const msg = document.getElementById('setup-msg');
+
+                if (name !== "" && contact !== "" && pass !== "") {
+                    if (pass.length < 6) {
+                        msg.style.display = 'block';
+                        msg.style.color = 'red';
+                        msg.textContent = "Password must be at least 6 characters long.";
+                        return;
+                    }
+
+                    // Save credentials into localStorage so the login logic recognizes them
+                    localStorage.setItem('lwcc_current_password', pass);
+                    localStorage.setItem('lwcc_logged_in', 'true');
+                    localStorage.setItem('lwcc_user', name);
+
+                    msg.style.display = 'block';
+                    msg.style.color = 'green';
+                    msg.textContent = "Account activated successfully! Redirecting to dashboard...";
+
+                    setTimeout(() => {
+                        window.location.href = "member-dashboard.html";
+                    }, 1500);
+                } else {
+                    msg.style.display = 'block';
+                    msg.style.color = 'red';
+                    msg.textContent = "Please fill out all required fields.";
+                }
+            });
+        }
+    });
+</script>
+
+</body>
+</html>
