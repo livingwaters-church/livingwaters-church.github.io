@@ -55,33 +55,51 @@
     function handleLogin(event) {
         event.preventDefault(); // Stop the form from traditional submission
         
-        const name = document.getElementById('username').value.trim();
-        const pass = document.getElementById('password').value;
-        const errorMsg = document.getElementById('error-msg');
+        try {
+            const usernameInput = document.getElementById('username');
+            const passwordInput = document.getElementById('password');
+            const errorMsg = document.getElementById('error-msg');
 
-        // Check if name and password are provided
-        if (name !== "" && pass !== "") {
-            
-            // Optional: If you want to simulate a minimum password check or match saved data:
-            // Let's store the registered password during reset so login can verify it
-            const savedPassword = localStorage.getItem('lwcc_current_password');
-            
-            // If a password was previously set/reset, require it to match (otherwise allow for testing)
-            if (savedPassword && pass !== savedPassword) {
-                errorMsg.style.display = 'block';
-                errorMsg.textContent = "Incorrect password. Please try again or reset your password.";
+            if (!usernameInput || !passwordInput) {
+                console.error("Form inputs not found!");
                 return;
             }
 
-            // Set session flags
-            localStorage.setItem('lwcc_logged_in', 'true');
-            localStorage.setItem('lwcc_user', name);
+            const name = usernameInput.value.trim();
+            const pass = passwordInput.value;
 
-            // Redirect to the member dashboard
-            window.location.href = "member-dashboard.html";
-        } else {
-            errorMsg.style.display = 'block';
-            errorMsg.textContent = "Please enter both name and password.";
+            console.log("Attempting login for:", name);
+
+            // Simple validation check
+            if (name !== "" && pass !== "") {
+                const savedPassword = localStorage.getItem('lwcc_current_password');
+                
+                // If a password was saved during reset, check it (or skip if testing freely)
+                if (savedPassword && pass !== savedPassword) {
+                    if (errorMsg) {
+                        errorMsg.style.display = 'block';
+                        errorMsg.textContent = "Incorrect password. Please try again or reset your password.";
+                    }
+                    return;
+                }
+
+                // Set session flags
+                localStorage.setItem('lwcc_logged_in', 'true');
+                localStorage.setItem('lwcc_user', name);
+
+                console.log("Login successful! Redirecting to dashboard...");
+                
+                // Force immediate redirection
+                window.location.replace("member-dashboard.html");
+            } else {
+                if (errorMsg) {
+                    errorMsg.style.display = 'block';
+                    errorMsg.textContent = "Please enter both name and password.";
+                }
+            }
+        } catch (err) {
+            console.error("Login script error:", err);
+            alert("An error occurred during login. Check console for details.");
         }
     }
 </script>
