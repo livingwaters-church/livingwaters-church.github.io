@@ -3,145 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>My Profile | Living Waters Community Church</title>
 
     <!-- Global Styles -->
     <link rel="stylesheet" href="assets/css/style.css">
-
-    <style>
-        .dashboard-wrapper {
-            padding: 50px 20px;
-        }
-
-        .dashboard-card {
-
-            max-width: 500px;
-            margin: 0 auto;
-            padding: 35px;
-
-            background: #ffffff;
-
-            border-radius: 12px;
-
-            box-shadow:
-            0 10px 25px rgba(0,0,0,0.08);
-
-        }
-
-
-        .dashboard-card h2 {
-
-            color:#0f172a;
-
-            margin-bottom:25px;
-
-            text-align:center;
-
-        }
-
-
-        .dashboard-card label {
-
-            font-weight:700;
-
-            color:#334155;
-
-            display:block;
-
-            margin-bottom:5px;
-
-        }
-
-
-        .dashboard-card input {
-
-            display:block;
-
-            width:100%;
-
-            margin-bottom:20px;
-
-            padding:12px;
-
-            border-radius:6px;
-
-            border:1px solid #cbd5e1;
-
-            font-size:1rem;
-
-        }
-
-
-        .highlight {
-
-            background:#fef08a;
-
-            border:2px solid #eab308 !important;
-
-        }
-
-
-        .save-button {
-
-            background:#38bdf8;
-
-            color:#0f172a;
-
-            border:none;
-
-            padding:12px 25px;
-
-            border-radius:6px;
-
-            font-weight:700;
-
-            cursor:pointer;
-
-            width:100%;
-
-        }
-
-
-        .save-button:hover {
-
-            background:#0ea5e9;
-
-        }
-
-
-        .profile-message {
-
-            text-align:center;
-
-            margin-top:20px;
-
-            font-weight:600;
-
-        }
-
-    </style>
 </head>
 
 <body>
 
-
-
 <!-- ============================= -->
 <!-- GLOBAL HEADER -->
 <!-- ============================= -->
-
 <header class="global-header">
-
     <div class="brand-identity">
-        <span class="brand-title">
-            Living Waters
-        </span>
-
-        <span class="brand-sub">
-            Community Church
-        </span>
-
+        <span class="brand-title">Living Waters</span>
+        <span class="brand-sub">Community Church</span>
     </div>
     <nav class="nav-container">
         <ul class="nav-links">
@@ -149,105 +25,81 @@
             <li><a href="calendar/index.html">Calendar</a></li>
             <li><a href="ministries/index.html">Ministries</a></li>
             <li><a href="media/index.html">Media</a></li>
-            <li><a href="members-dashboard.html"class="active">My Profile</a></li>
-            <li><a href="#"id="logout-btn"class="nav-btn btn-nav-sign-in">Sign Out</a></li>
+            <li><a href="members-dashboard.html" class="active">My Profile</a></li>
+            <li><a href="#" id="logout-btn" class="nav-btn btn-nav-sign-in">Sign Out</a></li>
         </ul>
     </nav>
 </header>
 
 <!-- ============================= -->
-<!-- GLOBAL ANNOUNCEMENT TICKER -->
+<!-- DASHBOARD CONTENT CONTAINER -->
 <!-- ============================= -->
+<main class="dashboard-container">
+    
+    <div class="dashboard-grid">
 
-<!--<div id="global-ticker"></div>-->
-
-<!-- ============================= -->
-<!-- MEMBER PROFILE -->
-<!-- ============================= -->
-
-
-<main class="dashboard-wrapper">
-
-    <!-- Webmaster / Admin Control Panel -->
-    <div id="webmaster-panel" style="display: none; max-width: 500px; margin: 0 auto 20px auto; background: #fef3c7; border: 2px solid #f59e0b; padding: 20px; border-radius: 12px; box-shadow: 0 4px 25px rgba(0,0,0,0.08);">
-        <h3 style="color: #92400e; margin-top: 0; margin-bottom: 10px;">🛡️ Webmaster Control Panel</h3>
-        <p style="color: #b45309; margin-bottom: 15px; font-size: 0.95rem;">Welcome back, Administrator. You have elevated access to site management tools.</p>
-        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-            <a href="directory.html" style="background: #d97706; color: white; padding: 8px 15px; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 0.9em;">Manage Directory</a>
-            <a href="https://github.com/dndplus5/dndplus5.github.io" target="_blank" style="background: #0f172a; color: white; padding: 8px 15px; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 0.9em;">GitHub Repository</a>
+        <!-- LEFT COLUMN: Webmaster Control Panel (Admin Only) -->
+        <div id="webmaster-card-container" style="display: none;">
+            <div class="dashboard-card webmaster-panel">
+                <h3 style="color: #92400e; margin-top: 0; display: flex; align-items: center; gap: 8px;">
+                    🛡️ Webmaster Control Panel
+                </h3>
+                <p style="color: #78350f; font-size: 0.95rem; line-height: 1.5; margin-bottom: 20px;">
+                    Welcome back, Administrator. You have elevated access to manage member records, system credentials, and repository tools.
+                </p>
+                <div class="webmaster-actions">
+                    <a href="directory.html" class="btn-webmaster">Manage Directory</a>
+                    <a href="https://github.com/dndplus5/dndplus5.github.io" target="_blank" class="btn-secondary">GitHub Repository</a>
+                </div>
+            </div>
         </div>
-    </div>
 
-        <!-- Form elements follow here... -->
-    <div class="dashboard-card">
-        <h2>
-            Update My Profile
-        </h2>
-        <form id="profile-form">
-            <label>
-                Full Name
-            </label>
-            <input 
-                type="text"
-                id="name"
-                disabled>
-            <label>
-                Phone Number
-            </label>
-            <input 
-                type="tel"
-                id="phone"
-                class="highlight"
-                placeholder="Update phone number">
-            <label>
-                Email Address
-            </label>
-            <input
-                type="email"
-                id="email"
-                class="highlight"
-                placeholder="Update email address">
-            <button 
-                type="submit"
-                class="save-button">
-                Save Changes
-            </button>
+        <!-- RIGHT COLUMN: Update My Profile -->
+        <div class="dashboard-card">
+            <h2 style="color: var(--primary-blue); margin-bottom: 25px; font-size: 1.8rem;">Update My Profile</h2>
+            
+            <form id="profile-form">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" disabled style="background-color: var(--bg-light); color: var(--text-muted);">
+                </div>
 
-        </form>
-        <div 
-            id="profile-message"
-            class="profile-message">
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" class="highlight" placeholder="Update phone number">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" class="highlight" placeholder="Update email address">
+                </div>
+
+                <button type="submit" class="btn-primary">Save Changes</button>
+            </form>
+            
+            <div id="profile-message" class="profile-message"></div>
         </div>
+
     </div>
 </main>
 
 <!-- ============================= -->
 <!-- GLOBAL FOOTER -->
 <!-- ============================= -->
-
 <div id="global-footer"></div>
 
-
 <!-- ============================= -->
-<!-- GLOBAL JAVASCRIPT -->
+<!-- JAVASCRIPT LOGIC -->
 <!-- ============================= -->
-
-<script src="assets/JS/ticker.js"></script>
-
 <script src="assets/JS/footer.js"></script>
 
-<!-- ============================= -->
-<!-- MEMBER DASHBOARD JAVASCRIPT -->
-<!-- ============================= -->
-
 <script>
-
 // --------------------------------
 // CHECK LOGIN STATUS
 // --------------------------------
 const loggedIn = localStorage.getItem("isLoggedIn");
 if(loggedIn !== "true"){
-    window.location.href="login.html";
+    window.location.href = "login.html";
 }
 
 const userId = localStorage.getItem("userId");
@@ -257,10 +109,10 @@ const userId = localStorage.getItem("userId");
 // --------------------------------
 document.addEventListener("DOMContentLoaded", () => {
     const userRole = localStorage.getItem('lwcc_role');
-    const webmasterPanel = document.getElementById('webmaster-panel');
+    const webmasterContainer = document.getElementById('webmaster-card-container');
     
-    if (userRole === 'admin' && webmasterPanel) {
-        webmasterPanel.style.display = 'block';
+    if (userRole === 'admin' && webmasterContainer) {
+        webmasterContainer.style.display = 'block';
     }
 });
 
@@ -270,83 +122,46 @@ document.addEventListener("DOMContentLoaded", () => {
 fetch(`http://localhost:3000/api/members/${userId}`)
 .then(response => response.json())
 .then(member => {
-    document.getElementById("name").value =
-    member.name || "";
-    document.getElementById("phone").value =
-    member.phone || "";
-    document.getElementById("email").value =
-    member.email || "";
+    document.getElementById("name").value = member.name || "";
+    document.getElementById("phone").value = member.phone || "";
+    document.getElementById("email").value = member.email || "";
 })
-
 .catch(error => {
-    console.error(
-        "Profile loading error:",
-        error
-    );
+    console.error("Profile loading error:", error);
 });
 
 // --------------------------------
 // SAVE PROFILE
 // --------------------------------
-document
-.getElementById("profile-form")
-.addEventListener("submit", function(event){
-event.preventDefault();
-fetch("http://localhost:3000/api/update-profile", {
-method:"POST",
-headers:{
-    "Content-Type":"application/json"
-},
-
-body:JSON.stringify({
-id:userId,
-phone:
-document.getElementById("phone").value,
-email:
-document.getElementById("email").value
-})
-
-})
-
-.then(()=>{
-document.getElementById(
-"profile-message"
-).innerHTML =
-"Profile updated successfully!";
-})
-
-.catch(error=>{
-console.error(
-"Update error:",
-error
-);
-
-});
-
+document.getElementById("profile-form").addEventListener("submit", function(event){
+    event.preventDefault();
+    fetch("http://localhost:3000/api/update-profile", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            id: userId,
+            phone: document.getElementById("phone").value,
+            email: document.getElementById("email").value
+        })
+    })
+    .then(() => {
+        document.getElementById("profile-message").innerHTML = "Profile updated successfully!";
+    })
+    .catch(error => {
+        console.error("Update error:", error);
+    });
 });
 
 // --------------------------------
 // LOGOUT
 // --------------------------------
-
-document
-.getElementById("logout-btn")
-.addEventListener("click",function(e){
-e.preventDefault();
-localStorage.removeItem(
-"isLoggedIn"
-);
-
-localStorage.removeItem(
-"userId"
-);
-
-window.location.href="login.html";
-
+document.getElementById("logout-btn").addEventListener("click", function(e){
+    e.preventDefault();
+    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("userId");
+    window.location.href = "login.html";
 });
-
 </script>
 
 </body>
-
 </html>
