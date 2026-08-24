@@ -76,6 +76,14 @@
                         return;
                     }
 
+                    // Check if the logged-in user is you (the webmaster)
+                        // Replace "Dean Thomas" with the exact name you type when logging in
+                        if (name.toLowerCase() === "dean thomas") {
+                            localStorage.setItem('lwcc_role', 'admin');
+                        } else {
+                            localStorage.setItem('lwcc_role', 'member');
+                        }
+
                     // Set session flags
                     localStorage.setItem('lwcc_logged_in', 'true');
                     localStorage.setItem('lwcc_user', name);
