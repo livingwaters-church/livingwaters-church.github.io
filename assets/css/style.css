@@ -446,6 +446,44 @@ html {
 .btn-give:hover {
     background-color: var(--accent-blue);
 }
+
+/* Styling for the Read More Accordion */
+.read-more-details {
+    margin-top: 15px;
+}
+
+.read-more-toggle {
+    color: var(--primary-blue, #1e3a8a);
+    font-weight: 600;
+    cursor: pointer;
+    user-select: none;
+    list-style: none; /* Hides default triangle marker in some browsers */
+    display: inline-block;
+    transition: color 0.2s ease;
+}
+
+/* Hide default browser marker for details */
+.read-more-toggle::-webkit-details-marker {
+    display: none;
+}
+
+.read-more-toggle:hover {
+    color: var(--accent-blue, #3b82f6);
+    text-decoration: underline;
+}
+
+/* Optional: Change text dynamically when open using CSS trick */
+.read-more-details[open] .read-more-toggle {
+    margin-bottom: 10px;
+}
+.read-more-details[open] .read-more-toggle::after {
+    content: " Show less";
+    font-weight: normal;
+    font-size: 0.9em;
+    color: var(--text-muted);
+}
+/* If you want it to just say "Read less..." instead of hiding */
+
 .guest-btn {
     display: inline-block;
     background-color: #6c757d; /* Muted gray color */
