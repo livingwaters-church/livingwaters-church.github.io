@@ -1281,7 +1281,7 @@ html {
 
 .webmaster-actions {
     display: flex;
-    gap: 15px;
+    gap: 35px;
     flex-wrap: wrap;
     margin-top: 25px;
 }
