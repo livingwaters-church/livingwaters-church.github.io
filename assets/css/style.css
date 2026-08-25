@@ -401,6 +401,12 @@ html {
     border-top: 5px solid #0891b2;
 }
 
+/* Sacrificial Giving Card: Rich purple or gold accent */
+.giving-card.sacrificial-giving {
+    border-top: 5px solid #8b5cf6; /* Vibrant Purple */
+    background: linear-gradient(to bottom, #faf5ff 0%, var(--bg-white) 100%);
+}
+
 .giving-card h3 {
     font-size: 1.5rem;
     color: var(--primary-blue);
