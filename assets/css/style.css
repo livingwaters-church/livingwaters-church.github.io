@@ -1289,42 +1289,26 @@ html {
     margin-top: 25px;
 }
 
-.btn-webmaster {
-    background-color: #d97706;
-    color: white;
-    text-decoration: none;
-    padding: 12px 28px;
+/* Individual button spacing and padding */
+.btn-webmaster, 
+.btn-webmaster-sub, 
+.btn-secondary {
+    padding: 12px 20px;   /* Internal breathing room inside the buttons */
+    margin-bottom: 10px;  /* Adds breathing room underneath each button when they wrap */
     border-radius: 6px;
     font-weight: bold;
+    text-decoration: none;
     display: inline-block;
 }
+
 .btn-webmaster:hover { 
     background-color: #b45309; 
 }
 
-/* Secondary Action Buttons inside Control Panel */
-.btn-webmaster-sub {
-    background-color: #0284c7;
-    color: white;
-    text-decoration: none;
-    padding: 12px 20px;
-    border-radius: 6px;
-    font-weight: bold;
-    display: inline-block;
-}
 .btn-webmaster-sub:hover {
     background-color: #0369a1;
 }
 
-.btn-secondary {
-    background-color: #0f172a;
-    color: white;
-    text-decoration: none;
-    padding: 12px 20px;
-    border-radius: 6px;
-    font-weight: bold;
-    display: inline-block;
-}
 .btn-secondary:hover { 
     background-color: #1e293b; 
 }
