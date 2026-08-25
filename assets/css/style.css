@@ -359,7 +359,7 @@ html {
     margin-bottom: 80px;
 }
 
-/* Individual Giving Cards */
+/* Individual Giving Cards Base */
 .giving-card {
     background-color: var(--bg-white);
     border: 1px solid #e2e8f0;
@@ -377,10 +377,28 @@ html {
     box-shadow: var(--card-hover-shadow);
 }
 
-/* Visual border highlight for the core Benevolence / Outreach fund */
+/* --- Card Theme Modifiers --- */
+
+/* General Fund: Clean professional blue accent */
+.giving-card.general-fund {
+    border-top: 5px solid #3b82f6;
+}
+
+/* Fellowship Hall: Warm burnt orange/amber accent for gathering & community */
+.giving-card.fellowship-hall {
+    border-top: 5px solid #d97706;
+    background: linear-gradient(to bottom, #fffdfa 0%, var(--bg-white) 100%);
+}
+
+/* A Mission of Hope (Highlighted Outreach): Ruby red/purple accent */
 .giving-card.highlighted {
-    border-top: 5px solid var(--accent-blue);
-    background-color: #fafafa;
+    border-top: 5px solid #e11d48;
+    background: linear-gradient(to bottom, #fff5f5 0%, var(--bg-white) 100%);
+}
+
+/* Mortgage Relief Fund: Steady cyan or deep navy accent for stewardship */
+.giving-card.mortgage-fund {
+    border-top: 5px solid #0891b2;
 }
 
 .giving-card h3 {
@@ -422,7 +440,6 @@ html {
 .btn-give:hover {
     background-color: var(--accent-blue);
 }
-
 .guest-btn {
     display: inline-block;
     background-color: #6c757d; /* Muted gray color */
