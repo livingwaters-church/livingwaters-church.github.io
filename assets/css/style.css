@@ -1299,16 +1299,27 @@ html {
     font-weight: bold;
     text-decoration: none;
     display: inline-block;
+    color: white;         /* Ensures button text is white */
 }
 
+/* Base Colors and Hover States */
+.btn-webmaster {
+    background-color: #d97706; /* Amber/Orange */
+}
 .btn-webmaster:hover { 
     background-color: #b45309; 
 }
 
+.btn-webmaster-sub {
+    background-color: #0284c7; /* Blue */
+}
 .btn-webmaster-sub:hover {
     background-color: #0369a1;
 }
 
+.btn-secondary {
+    background-color: #0f172a; /* Dark Navy */
+}
 .btn-secondary:hover { 
     background-color: #1e293b; 
 }
