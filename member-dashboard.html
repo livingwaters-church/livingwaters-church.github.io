@@ -41,10 +41,16 @@
                 <p style="color: #78350f; font-size: 0.95rem; line-height: 1.5; margin-bottom: 25px;">
                     Welcome back, Administrator. You have elevated access to manage member records, system credentials, and repository tools.
                 </p>
-                <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-                    <a href="directory.html" class="btn-webmaster" style="margin-right: 25px;">Manage Directory</a>
+               <!-- Webmaster Action Grid / Buttons -->
+                <div class="webmaster-actions">
+                    <a href="directory.html" class="btn-webmaster">Manage Directory</a>
+                    <a href="directory.html?status=unverified" class="btn-webmaster-sub">Review Unverified</a>
+                    <a href="http://localhost:3000/api/members/export" target="_blank" class="btn-webmaster-sub">Export Member DB</a>
+                    <a href="#" id="quick-add-btn" class="btn-webmaster-sub">Add New Member</a>
                     <a href="https://github.com/dndplus5/dndplus5.github.io" target="_blank" class="btn-secondary">GitHub Repository</a>
                 </div>
+                
+                <div id="admin-action-message" style="margin-top: 15px; font-size: 0.9rem; font-weight: bold; color: #047857;"></div>
             </div>
         </div>
 
@@ -117,6 +123,29 @@ fetch(`http://localhost:3000/api/members/${userId}`)
 })
 .catch(error => {
     console.error("Profile loading error:", error);
+});
+
+    document.getElementById("quick-add-btn").addEventListener("click", function(e) {
+    e.preventDefault();
+    const name = prompt("Enter new member's full name:");
+    const email = prompt("Enter new member's email:");
+    const phone = prompt("Enter new member's phone number:");
+
+    if (name && email) {
+        fetch("http://localhost:3000/api/members", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name, email, phone, status: "unverified" })
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("admin-action-message").innerText = `Success! Added ${name} as unverified.`;
+        })
+        .catch(err => {
+            console.error("Error adding member:", err);
+            alert("Failed to add member.");
+        });
+    }
 });
 
 // --------------------------------
