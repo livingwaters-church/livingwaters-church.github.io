@@ -1279,9 +1279,12 @@ html {
     background-color: #0369a1; 
 }
 
+/* ==========================
+   Webmaster Control Panel Actions
+   ========================== */
 .webmaster-actions {
     display: flex;
-    gap: 35px;
+    gap: 20px; /* Gives nice breathing room between buttons */
     flex-wrap: wrap;
     margin-top: 25px;
 }
@@ -1290,7 +1293,7 @@ html {
     background-color: #d97706;
     color: white;
     text-decoration: none;
-    padding: 10px 18px;
+    padding: 12px 28px;
     border-radius: 6px;
     font-weight: bold;
     display: inline-block;
@@ -1299,11 +1302,25 @@ html {
     background-color: #b45309; 
 }
 
+/* Secondary Action Buttons inside Control Panel */
+.btn-webmaster-sub {
+    background-color: #0284c7;
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-weight: bold;
+    display: inline-block;
+}
+.btn-webmaster-sub:hover {
+    background-color: #0369a1;
+}
+
 .btn-secondary {
     background-color: #0f172a;
     color: white;
     text-decoration: none;
-    padding: 10px 18px;
+    padding: 12px 20px;
     border-radius: 6px;
     font-weight: bold;
     display: inline-block;
