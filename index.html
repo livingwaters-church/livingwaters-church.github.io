@@ -238,13 +238,57 @@
 
        
         
-       <!-- FORCE CENTERED MOMENTUM ROW -->
+       <!-- CURRENT MOMENTUM ROW -->
         <div class="media-header" style="margin-bottom: 25px; text-align: center !important;">
                 <h2 style="text-align: center !important;">Current Momentum</h2>
                 <p style="text-align: center !important;">Catch up on what God is doing inside our church body right now.</p>
         </div>
 
         <div class="media-split-row" style="margin-bottom: 60px;">
+            
+            <!-- Left Panel: Sermon Highlight Panel (Existing) -->
+            <div class="media-panel" style="display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <span class="panel-badge">Latest Message</span>
+                    <h3 id="sermon-title">Loading latest sermon...</h3>
+                    <p id="sermon-speaker" style="color:#64748b; font-weight:600; margin-top:-10px; margin-bottom:15px;"> Loading speaker...</p>
+                    <p>Missed last Sunday's message or want to review the scripture text again? Stream the message recording right here.</p>
+                    
+                    <a id="sermon-link" href="#" target="_blank" style="display: block; position: relative; background: #000; padding-top: 56.25%; border-radius: 6px; overflow: hidden; margin: 20px 0; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                        <div id="sermon-thumbnail" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.4)); display: flex; align-items: center; justify-content: center; background-size: cover; background-position: center;">
+                            <div style="background: rgba(37, 99, 235, 0.9); width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: #fff;">▶</div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #e2e8f0; padding-top: 15px; margin-top: 5px;">
+                    <span id="sermon-scripture" style="font-size:0.85rem;color:#94a3b8;"> Loading...</span>
+                    <a href="https://www.youtube.com/@LivingWatersCommunityChurch/videos" target="_blank" class="btn-media-action" style="margin: 0;">View Full Sermons on YouTube &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Right Panel: Connect on Facebook & Leave a Review -->
+            <div class="media-panel" style="display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <span class="panel-badge" style="background-color: #dbeafe; color: #1e40af;">Community</span>
+                    <h3>Connect & Share Your Experience</h3>
+                    <p>Help others find our church family! Follow our page for updates and leave an honest review to let others know what God is doing here.</p>
+                    
+                    <!-- Graphic Display -->
+                    <div style="margin: 20px 0; text-align: center;">
+                        <a href="https://www.facebook.com/LivingWatersCommunityChurch" target="_blank">
+                            <img src="assets/images/Follow us on FB.png" alt="Help others find Living Waters - Follow our page and leave a review" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid #cbd5e1; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);">
+                        </a>
+                    </div>
+                </div>
+                
+                <div style="display: flex; gap: 10px;">
+                    <a href="https://www.facebook.com/LivingWatersCommunityChurch" target="_blank" class="btn-media-action" style="background: #1877f2; flex: 1; text-align: center; margin: 0;">Follow on Facebook</a>
+                    <a href="https://www.facebook.com/LivingWatersCommunityChurch/reviews" target="_blank" class="btn-media-action" style="background: #0f172a; flex: 1; text-align: center; margin: 0;">Leave a Review</a>
+                </div>
+            </div>
+
+        </div>
             
             <!-- Sermon Highlight Panel -->
             <div class="media-panel" style="display: flex; flex-direction: column; justify-content: space-between;">
