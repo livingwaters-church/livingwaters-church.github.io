@@ -153,6 +153,15 @@ html {
     font-weight: 400;
 }
 
+.hero-backdrop {
+    background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('../assets/images/events/singles_ministry_backdrop.png') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+}
+
 .btn-primary {
     display: inline-block;
     background-color: var(--bg-white);
