@@ -3,281 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Single & Complete Singles Ministry | Living Waters Community Church</title>
-    <!-- Global Styles -->
-    <link rel="stylesheet" href="assets/css/style.css">
-    <style>
-        .singles-hero {
-            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
-            color: #ffffff;
-            padding: 80px 20px;
-            text-align: center;
-            border-bottom: 4px solid #d4af37;
-        }
-        .scripture-banner {
-            background: rgba(212, 175, 55, 0.1);
-            border-left: 4px solid #d4af37;
-            padding: 20px;
-            margin: 30px auto;
-            max-width: 800px;
-            border-radius: 0 8px 8px 0;
-            font-style: italic;
-            color: #fef08a;
-        }
-        .pillar-card {
-            background: #ffffff;
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            border-top: 4px solid #38bdf8;
-            transition: transform 0.2s ease;
-        }
-        .pillar-card:hover {
-            transform: translateY(-5px);
-        }
-        .event-card {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 12px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
-        }
-        .event-card img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            border-bottom: 1px solid #e2e8f0;
-        }
-        .rsvp-form-container {
-            background: #ffffff;
-            border-radius: 12px;
-            padding: 40px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            max-width: 650px;
-            margin: 0 auto;
-            border-top: 5px solid #1e3a8a;
-        }
-        .form-group {
-            margin-bottom: 20px;
-            text-align: left;
-        }
-        .form-group label {
-            display: block;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: #1e293b;
-        }
-        .form-group input, .form-group select, .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #cbd5e1;
-            border-radius: 6px;
-            font-size: 1rem;
-            box-sizing: border-box;
-        }
-        .btn-submit {
-            background: #d4af37;
-            color: #0f172a;
-            font-weight: 700;
-            padding: 14px 28px;
-            border: none;
-            border-radius: 6px;
-            font-size: 1rem;
-            cursor: pointer;
-            width: 100%;
-            transition: background 0.2s;
-        }
-        .btn-submit:hover {
-            background: #ca8a04;
-            color: #ffffff;
-        }
-    </style>
+    <title>Singles Ministry - Living Waters Community Church</title>
+    <!-- Link to the main centralized stylesheet -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- GLOBAL NAVIGATION HEADER -->
+    <!-- ==========================================================================
+       GLOBAL NAVIGATION HEADER
+       ========================================================================== -->
     <header class="global-header">
         <div class="brand-identity">
             <span class="brand-title">Living Waters</span>
             <span class="brand-sub">Community Church</span>
         </div>
-        <nav class="nav-container">
+        <nav>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="about/index.html">About</a></li>
-                <li><a href="ministries/index.html" class="active">Ministries</a></li>
-                <li><a href="media/index.html">Media</a></li>
-                <li><a href="calendar/index.html">Calendar</a></li>
-                <li><a href="rightnow/index.html">RightNow</a></li>
-                <li><a href="../donate/index.html" class="btn-nav-give">Give</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="ministries.html" class="active">Ministries</a></li>
+                <li><a href="media.html">Media</a></li>
+                <li><a href="give.html" class="btn-nav-give">Give</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- HERO SECTION -->
-    <section class="singles-hero">
-        <span style="background: #d4af37; color: #0f172a; font-weight: 800; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; padding: 5px 12px; border-radius: 4px;">Living Waters Community Church</span>
-        <h1 style="font-size: 3rem; font-weight: 800; margin: 15px 0 10px 0; letter-spacing: -0.03em;">Single & Complete</h1>
-        <p style="color: #93c5fd; font-size: 1.25rem; font-weight: 500; letter-spacing: 1px; margin-bottom: 20px;">SINGLES MINISTRY</p>
-        
-        <div class="scripture-banner">
-            <p style="margin: 0; font-size: 1.15rem; line-height: 1.6;">"...You may live in a right way in undivided devotion to the Lord."</p>
-            <strong style="display: block; margin-top: 8px; font-style: normal; color: #ffffff; letter-spacing: 1px;">— 1 CORINTHIANS 7:35[cite: 7, 8]</strong>
+    <!-- ==========================================================================
+       HERO VIEWPORT LAYER
+       ========================================================================== -->
+    <section class="hero-viewport" style="min-height: 50vh;">
+        <div class="hero-content">
+            <h1>Singles Ministry</h1>
+            <p>A community designed for single adults to build authentic faith, form meaningful relationships, and serve together.</p>
+            <a href="#events" class="btn-primary">View Upcoming Events</a>
         </div>
     </section>
 
-    <!-- MAIN CONTENT CONTAINER -->
-    <main class="media-container" style="padding: 60px 20px;">
+    <!-- ==========================================================================
+       LOGISTICS ZONE BAR
+       ========================================================================== -->
+    <div class="logistics-bar">
+        <div class="logistics-item">
+            <h3>Gathering Time</h3>
+            <p>Every 4th Saturday</p>
+        </div>
+        <div class="logistics-item">
+            <h3>Location</h3>
+            <p>Fellowship Hall</p>
+        </div>
+        <div class="logistics-item">
+            <h3>Contact Leader</h3>
+            <p>singles@livingwaters.org</p>
+        </div>
+    </div>
 
-        <!-- MISSION & VISION SECTION -->
-        <section style="margin-bottom: 60px;">
-            <div style="text-align: center; max-width: 700px; margin: 0 auto 40px auto;">
-                <h2>Our Mission & Vision</h2>
-                <p style="color: #64748b; font-size: 1.1rem;">Empowering singles to thrive in purpose, build authentic friendships, and walk boldly in faith.</p>
-            </div>
+    <!-- ==========================================================================
+       SINGLES MINISTRY EVENTS SECTION
+       ========================================================================== -->
+    <section id="events" class="ministries-container">
+        <div class="ministries-header">
+            <h2>Singles Ministry Events</h2>
+            <p>Connect, fellowship, and grow together in faith.</p>
+        </div>
 
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-                <!-- Mission Card -->
-                <div class="pillar-card">
-                    <div style="font-size: 2rem; margin-bottom: 15px;">🎯</div>
-                    <h3 style="color: #1e3a8a; margin-bottom: 12px;">Our Mission</h3>
-                    <p style="color: #334155; line-height: 1.6; margin: 0;">To cultivate an intentional environment where single adults can connect, collaborate, and grow spiritually. We focus on real people, real conversations, and real faith[cite: 7], building deep bonds rooted firmly in Christian scripture.</p>
-                </div>
-
-                <!-- Vision Card -->
-                <div class="pillar-card" style="border-top-color: #d4af37;">
-                    <div style="font-size: 2rem; margin-bottom: 15px;">🌟</div>
-                    <h3 style="color: #b45309; margin-bottom: 12px;">Our Vision</h3>
-                    <p style="color: #334155; line-height: 1.6; margin: 0;">To see every single person recognize their completeness in Christ. By fostering genuine friendships and collaborative community outreach, we equip believers to live purposeful, undivided lives dedicated to God's calling[cite: 7, 8].</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- CORE PILLARS SECTION -->
-        <section style="background: #f1f5f9; padding: 50px 30px; border-radius: 16px; margin-bottom: 60px;">
-            <div style="text-align: center; margin-bottom: 40px;">
-                <span style="background: #e0f2fe; color: #0369a1; font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; padding: 4px 10px; border-radius: 4px;">Foundational Values</span>
-                <h2 style="margin-top: 10px;">What We Stand For</h2>
-            </div>
-
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; text-align: center;">
-                <div style="background: #ffffff; padding: 25px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-                    <h4 style="color: #1e3a8a; font-size: 1.2rem; margin-bottom: 10px;">🍞 Food & Fellowship</h4>
-                    <p style="font-size: 0.9rem; color: #64748b; margin: 0;">Sharing meals, breaking bread, and building organic community around tables filled with warmth[cite: 7].</p>
-                </div>
-                <div style="background: #ffffff; padding: 25px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-                    <h4 style="color: #1e3a8a; font-size: 1.2rem; margin-bottom: 10px;">📖 Faith & Scripture</h4>
-                    <p style="font-size: 0.9rem; color: #64748b; margin: 0;">Anchoring our lives, decisions, and discussions in the timeless truth of God's Word[cite: 7, 8].</p>
-                </div>
-                <div style="background: #ffffff; padding: 25px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-                    <h4 style="color: #1e3a8a; font-size: 1.2rem; margin-bottom: 10px;">🤝 Building Relationships</h4>
-                    <p style="font-size: 0.9rem; color: #64748b; margin: 0;">Creating a safe space for authentic peer connections, accountability, and lifelong friendships.</p>
-                </div>
-                <div style="background: #ffffff; padding: 25px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-                    <h4 style="color: #1e3a8a; font-size: 1.2rem; margin-bottom: 10px;">💡 Heavy Conversations</h4>
-                    <p style="font-size: 0.9rem; color: #64748b; margin: 0;">Tackling real-life topics with grace, wisdom, and mutual support as Christian singles[cite: 8].</p>
+        <div class="ministries-grid">
+            <!-- Upcoming Event: September 2026 -->
+            <div class="event-card">
+                <img src="assets/images/events/singles ministry sept.png" alt="Bible and Breakfast Singles Ministry">
+                <div class="event-card-body">
+                    <span class="event-badge upcoming">Upcoming Event</span>
+                    <h3>Bible and Breakfast</h3>
+                    <p class="event-details">
+                        <strong>Date:</strong> September 26, 2026<br>
+                        <strong>Time:</strong> 9:00 AM<br>
+                        <strong>Location:</strong> Living Waters Community Church<br>
+                        <em>Food, Fellowship, Faith, & Friends</em>
+                    </p>
+                    <a href="#rsvp" class="btn-media-action event-action-btn">RSVP for This Event</a>
                 </div>
             </div>
-        </section>
 
-        <!-- EVENTS & GATHERINGS SECTION -->
-        <section style="margin-bottom: 60px;">
-            <div style="text-align: center; margin-bottom: 40px;">
-                <h2>Ministry Gatherings</h2>
-                <p style="color: #64748b;">Upcoming events and past fellowship highlights.</p>
-            </div>
-
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
-                
-                <!-- Upcoming Event: September 2026 -->
-                <div class="event-card">
-                    <img src="assets/images/events/singles ministry sept.png" alt="Bible and Breakfast Singles Ministry">
-                    <div style="padding: 25px; display: flex; flex-direction: column; flex-grow: 1;">
-                        <span style="background: #f0fdf4; color: #15803d; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; display: inline-block; width: fit-content; margin-bottom: 10px;">Upcoming Event</span>
-                        <h3 style="margin: 0 0 10px 0; font-size: 1.3rem;">Bible and Breakfast</h3>
-                        <p style="font-size: 0.95kp; color: #475569; line-height: 1.5; margin-bottom: 20px;">
-                            <strong>Date:</strong> September 26, 2026<br>
-                            <strong>Time:</strong> 9:00 AM<br>
-                            <strong>Location:</strong> Living Waters Community Church<br>
-                            <em>Food, Fellowship, Faith, & Friends</em>[cite: 7]
-                        </p>
-                        <a href="#rsvp" class="btn-media-action" style="margin-top: auto; text-align: center; display: block; text-decoration: none;">RSVP for This Event</a>
+            <!-- Past Event Archive: July 2026 -->
+            <div class="event-card event-archive">
+                <img src="assets/images/events/725 Singles ministry Flyer.jpg" alt="Light Snacks with Heavy Conversation">
+                <div class="event-card-body">
+                    <span class="event-badge archive">Event Archive</span>
+                    <h3>Light Snacks & Heavy Conversation</h3>
+                    <p class="event-details">
+                        <strong>Date:</strong> Saturday, July 25, 2026<br>
+                        <strong>Time:</strong> 11:00 AM<br>
+                        <strong>Location:</strong> Living Waters Community Church<br>
+                        <em>A powerful time of transparent fellowship and connection</em>.
+                    </p>
+                    <div class="event-concluded-banner">
+                        Event Concluded
                     </div>
                 </div>
-
-                <!-- Past Event Archive: July 2026 -->
-                <div class="event-card" style="opacity: 0.95;">
-                    <img src="assets/images/events/725 Singles ministry Flyer.jpg" alt="Light Snacks with Heavy Conversation">
-                    <div style="padding: 25px; display: flex; flex-direction: column; flex-grow: 1;">
-                        <span style="background: #f1f5f9; color: #475569; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; display: inline-block; width: fit-content; margin-bottom: 10px;">Event Archive</span>
-                        <h3 style="margin: 0 0 10px 0; font-size: 1.3rem;">Light Snacks & Heavy Conversation</h3>
-                        <p style="font-size: 0.95rem; color: #475569; line-height: 1.5; margin-bottom: 20px;">
-                            <strong>Date:</strong> Saturday, July 25, 2026<br>
-                            <strong>Time:</strong> 11:00 AM<br>
-                            <strong>Location:</strong> Living Waters Community Church<br>
-                            <em>A powerful time of transparent fellowship and connection</em>[cite: 8].
-                        </p>
-                        <div style="margin-top: auto; padding: 10px; background: #e2e8f0; text-align: center; border-radius: 6px; font-size: 0.85rem; font-weight: 600; color: #334155;">
-                            Event Concluded
-                        </div>
-                    </div>
-                </div>
-
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- INTERACTIVE RSVP FORM -->
-        <section id="rsvp">
-            <div class="rsvp-form-container">
-                <div style="text-align: center; margin-bottom: 30px;">
-                    <span style="background: #fef08a; color: #854d0e; font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; padding: 4px 10px; border-radius: 4px;">Get Connected</span>
-                    <h2 style="margin-top: 10px; margin-bottom: 5px;">RSVP for Our Next Gathering</h2>
-                    <p style="color: #64748b; font-size: 0.95rem;">Let us know you're coming so we can prepare enough food and space!</p>
-                </div>
-
-                <form onsubmit="event.preventDefault(); alert('Thank you for registering! We look forward to seeing you at our next Singles Ministry gathering.');">
-                    <div class="form-group">
-                        <label for="fullName">Full Name</label>
-                        <input type="text" id="fullName" required placeholder="Enter your full name">
-                    </div>
-
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" required placeholder="your.email@example.com">
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" placeholder="(270) 555-0199">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="eventSelect">Select Gathering</label>
-                        <select id="eventSelect" required>
-                            <option value="sept-26">Bible & Breakfast – September 26, 2026 (9:00 AM)</option>
-                            <option value="general">General Singles Ministry Mailing List / Updates</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="notes">Dietary Restrictions or Questions (Optional)</label>
-                        <textarea id="notes" rows="3" placeholder="Let us know if you have any allergies or questions..."></textarea>
-                    </div>
-
-                    <button type="submit" class="btn-submit">Submit RSVP &rarr;</button>
-                </form>
+    <!-- ==========================================================================
+       GLOBAL FOOTER
+       ========================================================================== -->
+    <footer class="global-footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Living Waters Community Church</h4>
+                <p>Rooted in faith, growing in grace, and reaching out in love to our community and the world.</p>
             </div>
-        </section>
+            <div class="footer-col">
+                <h4>Service Times</h4>
+                <p><strong>Sunday Worship:</strong> 10:00 AM</p>
+                <p><strong>Wednesday Bible Study:</strong> 7:00 PM</p>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Us</h4>
+                <p>123 Living Waters Way</p>
+                <p>Clarksville, TN 37040</p>
+                <p>Email: info@livingwaters.org</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Living Waters Community Church. All rights reserved.</p>
+        </div>
+    </footer>
 
-    </main>
-
-    <!-- GLOBAL FOOTER -->
-    <div id="global-footer"></div>
-    
-    <script src="assets/JS/footer.js"></script>
-    <script src="assets/JS/ticker.js"></script>
 </body>
 </html>
