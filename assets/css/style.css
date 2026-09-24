@@ -1384,3 +1384,87 @@ html {
 .btn-secondary:hover { 
     background-color: #1e293b; 
 }
+
+/* ==========================================================================
+   EVENT CARD SYSTEM & MODIFIERS
+   ========================================================================== */
+.event-card {
+    background-color: var(--bg-white);
+    border: 1px solid #e2e8f0;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--card-shadow);
+    transition: var(--transition-smooth);
+}
+
+.event-card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.event-card-body {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.event-card h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.3rem;
+    color: var(--primary-blue);
+}
+
+.event-details {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+/* Badge Styles */
+.event-badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 4px;
+    display: inline-block;
+    width: fit-content;
+    margin-bottom: 10px;
+}
+
+.event-badge.upcoming {
+    background: #f0fdf4;
+    color: #15803d;
+}
+
+.event-badge.archive {
+    background: #f1f5f9;
+    color: #475569;
+}
+
+/* Event Specific Buttons & Banners */
+.event-action-btn {
+    margin-top: auto;
+    text-align: center;
+    display: block;
+    text-decoration: none;
+}
+
+.event-archive {
+    opacity: 0.95;
+}
+
+.event-concluded-banner {
+    margin-top: auto;
+    padding: 10px;
+    background: #e2e8f0;
+    text-align: center;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #334155;
+}
