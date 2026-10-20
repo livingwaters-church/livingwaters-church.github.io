@@ -4,7 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Suttons on Mission | Living Waters Community Church</title>
+    
+    <!-- CSS Stylesheet -->
     <link rel="stylesheet" href="../assets/css/style.css">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Theme Initialization Script (Prevents White Flash) -->
+    <script>
+      (function() {
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      })();
+    </script>
 </head>
 <body>
 
@@ -22,8 +38,17 @@
                 <li><a href="../media/index.html">Media</a></li>
                 <li><a href="../calendar/index.html">Calendar</a></li>
                 <li><a href="../rightnow/index.html">RightNow</a></li>
-                <li><a href="../donate/index.html" class="nav-btn btn-nav-give">Give</a></li>
                 
+                <!-- Global Theme Toggle Slider Button -->
+                <li>
+                    <button id="theme-toggle" class="btn-theme-toggle" aria-label="Toggle Dark/Light Mode">
+                        <span class="slider-thumb">
+                            <i id="theme-icon" class="fa-solid fa-moon"></i>
+                        </span>
+                    </button>
+                </li>
+
+                <li><a href="../donate/index.html" class="nav-btn btn-nav-give">Give</a></li>
             </ul>
         </nav>
     </header>
@@ -40,8 +65,8 @@
         min-height:45vh;">
 
         <div class="hero-content">
-            <h1>Suttons on Mission</h1>
-            <p>Partnering with the Sutton family to bring the message of the Gospel to church planting initiatives in Utah.</p>
+            <h1 style="color: #ffffff !important; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);">Suttons on Mission</h1>
+            <p style="color: #ffffff !important; text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);">Partnering with the Sutton family to bring the message of the Gospel to church planting initiatives in Utah.</p>
         </div>
     </section>
 
@@ -58,7 +83,7 @@
     <p>The Sutton family serves as our primary missionary partners on the ground in Utah—one of the least evangelical states in the country. From supporting local works like Redemption Bear River in Tremonton to organizing community group outreaches in Syracuse, Living Waters stands directly with them through prayer, short-term team deployments, and financial funding.</p>
     
     <!-- MISSIONARY FAMILY BIO & PHOTO CARD -->
-    <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 20px; margin: 25px 0; display: flex; flex-direction: column; md-flex-direction: row; gap: 20px; align-items: center;">
+    <div style="background: var(--bg-light); border: 1px solid var(--card-border); border-radius: 10px; padding: 20px; margin: 25px 0; display: flex; flex-direction: column; gap: 20px; align-items: center;">
         <div style="flex-shrink: 0; text-align: center;">
             <img src="../assets/images/ministries/suttons/sutton-family.jpg" 
                  alt="The Sutton Family - Missionaries to Utah" 
@@ -69,9 +94,9 @@
                 Meet the Sutton Family
             </h4>
             <p style="font-size: 0.93rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 0;">
-               Andrew and Rachael have been married since 2001 and are blessed with four beautiful daughters and a wonderful son-in-law. Rachael is an experienced educator with 18 years in teaching, 
-               while Andrew served bi-vocationally as a home builder and pastor. Passionate about both domestic and international missions, their faith was deeply shaped while serving together as missionaries in Uganda, Africa. 
-               Today, they are focused on local mission work—with a heart to follow God’s lead and share His love through relationship, service, and compassion.
+                Andrew and Rachael have been married since 2001 and are blessed with four beautiful daughters and a wonderful son-in-law. Rachael is an experienced educator with 18 years in teaching, 
+                while Andrew served bi-vocationally as a home builder and pastor. Passionate about both domestic and international missions, their faith was deeply shaped while serving together as missionaries in Uganda, Africa. 
+                Today, they are focused on local mission work—with a heart to follow God’s lead and share His love through relationship, service, and compassion.
             </p>
         </div>
     </div>
@@ -84,7 +109,7 @@
                 <div class="media-placeholder-box"
                      style="text-align:center;
                             padding:30px;
-                            background:#f8fafc;
+                            background:var(--bg-light);
                             border:2px solid var(--accent-blue);
                             border-radius:10px;">
                 
@@ -108,7 +133,7 @@
                    target="_blank"
                    class="btn-media-action"
                    style="background-color:var(--accent-blue); display:inline-block;">
-                    📄 View Octoberber Newsletter (PDF)
+                    📄 View October Newsletter (PDF)
                 </a>
                 </div>
     
@@ -127,8 +152,8 @@
                     
                    
                      <!-- September Newsletter -->
-                    <div style="background:#fff;
-                                border:1px solid #e2e8f0;
+                    <div style="background:var(--bg-white);
+                                border:1px solid var(--card-border);
                                 border-radius:10px;
                                 padding:20px;
                                 text-align:center;
@@ -154,8 +179,8 @@
                     </div>
                     
                     <!-- August Newsletter -->
-                    <div style="background:#fff;
-                                border:1px solid #e2e8f0;
+                    <div style="background:var(--bg-white);
+                                border:1px solid var(--card-border);
                                 border-radius:10px;
                                 padding:20px;
                                 text-align:center;
@@ -181,24 +206,24 @@
                     </div>
 
                     <!-- July Newsletter -->
-                    <div style="background:#fff;
-                                border:1px solid #e2e8f0;
+                    <div style="background:var(--bg-white);
+                                border:1px solid var(--card-border);
                                 border-radius:10px;
                                 padding:20px;
                                 text-align:center;
                                 box-shadow:0 2px 8px rgba(0,0,0,.05);">
-                
+                    
                         <img src="../assets/docs/suttons/som-newsletter- july-2026-1.png"
                             alt="July 2026 Suttons Newsletter"
                             style="width:180px;
                                    height:auto;
                                    border-radius:6px;
                                    margin-bottom:15px;">
-                
+                    
                         <h4 style="margin-bottom:12px; color:var(--primary-blue);">
                             July 2026
                         </h4>
-                
+                    
                         <a href="../assets/docs/suttons/som-newsletter-2026-6.pdf"
                            target="_blank"
                            class="btn-media-action"
@@ -208,24 +233,24 @@
                     </div>
                 
                     <!-- June Newsletter -->
-                    <div style="background:#fff;
-                                border:1px solid #e2e8f0;
+                    <div style="background:var(--bg-white);
+                                border:1px solid var(--card-border);
                                 border-radius:10px;
                                 padding:20px;
                                 text-align:center;
                                 box-shadow:0 2px 8px rgba(0,0,0,.05);">
-                
+                    
                         <img src="../assets/docs/suttons/som-newsletter-june-2026-1.png"
                             alt="June 2026 Suttons Newsletter"
                             style="width:180px;
                                    height:auto;
                                    border-radius:6px;
                                    margin-bottom:15px;">
-                
+                    
                         <h4 style="margin-bottom:12px; color:var(--primary-blue);">
                             June 2026
                         </h4>
-                
+                    
                         <a href="../assets/docs/suttons/som-newsletter-2026-6.pdf"
                            target="_blank"
                            class="btn-media-action"
@@ -238,65 +263,50 @@
             
     
     <!-- Right Column: Real Prayer Points & Support Sidebar -->
-            <div class="prayer-requests-container" style="background: #f8fafc; border-radius: 12px; padding: 25px; border: 1px solid #e2e8f0;">
+            <div class="prayer-requests-container" style="background: var(--bg-light); border-radius: 12px; padding: 25px; border: 1px solid var(--card-border);">
     
     <!-- SECTION 1: Current / Immediate Requests -->
-            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 18px; margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.02); height: auto; max-width: 100%; align-self: flex-start; flex: none;">
-                <div style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #1e3a8a; margin-bottom: 14px; display: flex; align-items: center; gap: 6px; border-bottom: 2px solid #eff6ff; padding-bottom: 8px;">
-                    <i class="fa-solid fa-bolt" style="color: #3b82f6;"></i> Praises &amp; Prayer Requests
+                <div style="background: var(--bg-white); border: 1px solid var(--card-border); border-radius: 10px; padding: 18px; margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.02); height: auto; max-width: 100%; align-self: flex-start; flex: none;">
+                    <div style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--primary-blue); margin-bottom: 14px; display: flex; align-items: center; gap: 6px; border-bottom: 2px solid var(--bg-light); padding-bottom: 8px;">
+                        <i class="fa-solid fa-bolt" style="color: #3b82f6;"></i> Praises &amp; Prayer Requests
+                    </div>
+            
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <!-- Item 1 -->
+                        <div style="background: var(--bg-light); padding: 12px 14px; border-radius: 6px; border-left: 4px solid #3b82f6;">
+                            <strong style="color: var(--text-main); display: block; margin-bottom: 2px;">Andrew's Support Raising Trip</strong>
+                            <span style="color: var(--text-muted); font-size: 0.92rem;">Pray for Andrew as he travels back east to touch base with supporters and create new support connections for Redemption Lakeside[cite: 1].</span>
+                        </div>
+            
+                        <!-- Item 2 -->
+                        <div style="background: var(--bg-light); padding: 12px 14px; border-radius: 6px; border-left: 4px solid #10b981;">
+                            <strong style="color: var(--text-main); display: block; margin-bottom: 2px;">Planting Team</strong>
+                            <span style="color: var(--text-muted); font-size: 0.92rem;">Continue praying for the Paulk family[cite: 1].</span>
+                        </div>
+            
+                        <!-- Item 3 -->
+                        <div style="background: var(--bg-light); padding: 12px 14px; border-radius: 6px; border-left: 4px solid #f59e0b;">
+                            <strong style="color: var(--text-main); display: block; margin-bottom: 2px;">Redemption Lakeside</strong>
+                            <span style="color: var(--text-muted); font-size: 0.92rem;">Continue to pray that we are able to find a meeting place for Redemption Lakeside, as well as the financial support to sustain it[cite: 1].</span>
+                        </div>
+            
+                        <!-- Item 4 -->
+                        <div style="background: var(--bg-light); padding: 12px 14px; border-radius: 6px; border-left: 4px solid #8b5cf6;">
+                            <strong style="color: var(--text-main); display: block; margin-bottom: 2px;">Syracuse Community Group</strong>
+                            <span style="color: var(--text-muted); font-size: 0.92rem;">Continue praying for the Syracuse community group[cite: 1].</span>
+                        </div>
+            
+                        <!-- Item 5 -->
+                        <div style="background: var(--bg-light); padding: 12px 14px; border-radius: 6px; border-left: 4px solid #ec4899;">
+                            <strong style="color: var(--text-main); display: block; margin-bottom: 2px;">Crossroads Fellowship Mission Team</strong>
+                            <span style="color: var(--text-muted); font-size: 0.92rem;">Praise for the mission team from Crossroads Fellowship in Cadiz, KY[cite: 1].</span>
+                        </div>
+                    </div>
                 </div>
-            
-                <div style="display: flex; flex-direction: column; gap: 10px;">
-                    <!-- Item 1 -->
-                    <div style="background: #f8fafc; padding: 12px 14px; border-radius: 6px; border-left: 4px solid #3b82f6;">
-                        <strong style="color: #1e293b; display: block; margin-bottom: 2px;">Andrew's Support Raising Trip</strong>
-                        <span style="color: #475569; font-size: 0.92rem;">Pray for Andrew as he travels back east to touch base with supporters and create new support connections for Redemption Lakeside.</span>
-                    </div>
-            
-                    <!-- Item 2 -->
-                    <div style="background: #f8fafc; padding: 12px 14px; border-radius: 6px; border-left: 4px solid #10b981;">
-                        <strong style="color: #1e293b; display: block; margin-bottom: 2px;">Planting Team</strong>
-                        <span style="color: #475569; font-size: 0.92rem;">Continue praying for the Paulk family.</span>
-                    </div>
-            
-                    <!-- Item 3 -->
-                    <div style="background: #f8fafc; padding: 12px 14px; border-radius: 6px; border-left: 4px solid #f59e0b;">
-                        <strong style="color: #1e293b; display: block; margin-bottom: 2px;">Redemption Lakeside</strong>
-                        <span style="color: #475569; font-size: 0.92rem;">Continue to pray that we are able to find a meeting place for Redemption Lakeside, as well as the financial support to sustain it.</span>
-                    </div>
-            
-                    <!-- Item 4 -->
-                    <div style="background: #f8fafc; padding: 12px 14px; border-radius: 6px; border-left: 4px solid #8b5cf6;">
-                        <strong style="color: #1e293b; display: block; margin-bottom: 2px;">Syracuse Community Group</strong>
-                        <span style="color: #475569; font-size: 0.92rem;">Continue praying for the Syracuse community group.</span>
-                    </div>
-            
-                    <!-- Item 5 -->
-                    <div style="background: #f8fafc; padding: 12px 14px; border-radius: 6px; border-left: 4px solid #ec4899;">
-                        <strong style="color: #1e293b; display: block; margin-bottom: 2px;">Crossroads Fellowship Mission Team</strong>
-                        <span style="color: #475569; font-size: 0.92rem;">Praise for the mission team from Crossroads Fellowship in Cadiz, KY.</span>
-                    </div>
-                </div>
-            </div>
-         </div>
+           </div>
                 
-        <!--<div class="media-panel" style="flex: 1; justify-content: flex-start;">
-        <div class="media-panel" style="flex: 1; justify-content: flex-start;">
-        <h3 style="font-size: 1.4rem; margin-bottom: 15px;">Praises & Prayer Requests</h3>
-        
-        <ul style="padding-left: 20px; color: var(--text-muted); font-size: 0.9rem; line-height: 1.7; margin-bottom: 30px; display: flex; flex-direction: column; gap: 12px;">
-            <li><strong>Andrew's Support Raising Trip:</strong> Pray for Andrew as he travels back east to touch base with supporters and create new support connections for Redemption Lakeside.</li>
-            <li><strong>Planting Team:</strong> Continue praying for the Paulk family.</li>
-            <li><strong>Redemption Lakeside:</strong> Continue to pray that we are able to find a meeting place for Redemption Lakeside, as well as the financial support to sustain it.</li>
-            <li><strong>Syracuse Community Group:</strong> Continue praying for the Syracuse community group.</li>
-            <li><strong>Crossroads Fellowship Mission Team:</strong> Praise for the mission team from Crossroads Fellowship in Cadiz, KY.</li>
-        </ul>
-    
-        <hr style="border: 0; border-top: 1px solid #e2e8f0; margin-bottom: 20px;">
-    </div>
-    
     <!-- SUPPORT / JOIN US SECTION -->
-    <div style="background: var(--bg-light); padding: 20px; border-radius: 10px; border: 1px solid #e2e8f0; text-align: center;">
+    <div style="background: var(--bg-light); padding: 20px; border-radius: 10px; border: 1px solid var(--card-border); text-align: center;">
         <h4 style="font-size: 1.1rem; color: var(--primary-blue); margin-bottom: 8px;">Join Our Support Team</h4>
         <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;">
             Partner with the Suttons to bring the message of the Gospel to the Utah Valley.
@@ -386,6 +396,7 @@
     <script src="../assets/js/gallery.js"></script>
     <script src="../assets/js/ticker.js"></script>
     <script src="../assets/js/footer.js"></script>
+    <script src="../assets/JS/theme.js"></script>
     
 </body>
 </html>
