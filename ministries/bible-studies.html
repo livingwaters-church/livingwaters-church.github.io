@@ -4,28 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bible Studies & Connection Groups | Living Waters Community Church</title>
+
     <!-- Stepping up one directory level to reach our global assets folder -->
     <link rel="stylesheet" href="../assets/css/style.css">
 
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Theme Initialization Script (Prevents White Flash) -->
+    <script>
+      (function() {
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      })();
+    </script>
 </head>
 <body>
 
-   <!-- GLOBAL NAVIGATION HEADER --> 
+    <!-- GLOBAL NAVIGATION HEADER --> 
     <header class="global-header"> 
-       <div class="brand-identity"> 
-           <span class="brand-title">Living Waters</span> 
-           <span class="brand-sub">Community Church</span> 
-       </div> 
+        <div class="brand-identity"> 
+            <span class="brand-title">Living Waters</span> 
+            <span class="brand-sub">Community Church</span> 
+        </div> 
         <nav class="nav-container"> 
             <ul class="nav-links"> 
-                <li><a href="index.html" class="active">Home</a></li> 
-                <li><a href="about/index.html">About</a></li> 
-                <li><a href="ministries/index.html">Ministries</a></li> 
-                <li><a href="media/index.html">Media</a></li> 
-                <li><a href="calendar/index.html">Calendar</a></li> 
-                <li><a href="rightnow/index.html">RightNow</a></li> 
+                <li><a href="../index.html">Home</a></li> 
+                <li><a href="../about/index.html">About</a></li> 
+                <li><a href="../ministries/index.html" class="active">Ministries</a></li> 
+                <li><a href="../media/index.html">Media</a></li> 
+                <li><a href="../calendar/index.html">Calendar</a></li> 
+                <li><a href="../rightnow/index.html">RightNow</a></li> 
 
                 <!-- Theme Toggle Slider Button -->
                 <li>
@@ -35,8 +47,11 @@
                         </span>
                     </button>
                 </li>
-               
-                <li><a href="donate/index.html" class="nav-btn btn-nav-give">Give</a></li> 
+                
+                <li><a href="../donate/index.html" class="nav-btn btn-nav-give">Give</a></li> 
+            </ul> 
+        </nav> 
+    </header>
 
     <!-- MINISTRY SUB-PAGE SPLASH HERO -->
     <section class="hero-viewport" style="background: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.75)), url('../assets/images/studies-hero-placeholder.jpg') no-repeat center center/cover; min-height: 45vh;">
@@ -48,7 +63,7 @@
 
     <main class="media-container">
         <!-- Back Link Navigation Block -->
-        <p style="margin-bottom: 30px;"><a href="index.html" style="color: var(--accent-blue); text-decoration: none; font-weight: 600;">&larr; Back to All Ministries</a></p>
+        <p style="margin-bottom: 30px;"><a href="../ministries/index.html" style="color: var(--accent-blue); text-decoration: none; font-weight: 600;">&larr; Back to All Ministries</a></p>
 
         <!-- TWO COLUMN DETAILS LAYOUT -->
         <div class="media-split-row">
@@ -89,10 +104,11 @@
     <!-- GLOBAL FOOTER -->
     <div id="global-footer"></div> 
     
-    <script src="assets/JS/footer.js"></script>
+    <!-- SCRIPTS -->
+    <script src="../assets/JS/footer.js"></script>
     <script src="../assets/JS/theme.js"></script>
-    </script> <script src="assets/JS/ticker.js"></script> 
-    <script src="assets/JS/latest-sermon.js"></script>
+    <script src="../assets/JS/ticker.js"></script> 
+    <script src="../assets/JS/latest-sermon.js"></script>
 
 </body>
 </html>
