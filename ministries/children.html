@@ -5,7 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Children's Ministry | Living Waters Community Church</title>
 
+    <!-- CSS Stylesheets -->
     <link rel="stylesheet" href="../assets/css/style.css">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Theme Initialization Script (Prevents White Flash) -->
+    <script>
+      (function() {
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      })();
+    </script>
 
     <style>
         .children-hero {
@@ -20,179 +35,162 @@
 
             background-size: cover;
             background-position: center;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            text-align:center;
-            color:white;
-            border-bottom:4px solid #38bdf8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #ffffff;
+            border-bottom: 4px solid var(--accent-blue, #38bdf8);
         }
 
         .children-hero-content {
-            max-width:800px;
-            padding:40px;
+            max-width: 800px;
+            padding: 40px;
         }
 
         .children-hero h1 {
-            font-size:3rem;
-            margin-bottom:20px;
-            font-weight:800;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+            color: #ffffff !important;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
         }
 
         .children-hero p {
-            font-size:1.2rem;
-            line-height:1.6;
-            color:#dbeafe;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #dbeafe !important;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
         }
 
         .children-section {
-            max-width:1100px;
-            margin:50px auto;
-            padding:20px;
+            max-width: 1100px;
+            margin: 50px auto;
+            padding: 20px;
         }
 
         .children-card {
-            background:white;
-            border-radius:12px;
-            padding:30px;
-            box-shadow:0 4px 12px rgba(0,0,0,.08);
-            margin-bottom:30px;
+            background: var(--bg-white, #ffffff);
+            color: var(--text-main, #1f2937);
+            border: 1px solid var(--card-border, #e2e8f0);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: var(--card-shadow, 0 4px 12px rgba(0,0,0,.08));
+            margin-bottom: 30px;
+            transition: var(--transition-smooth, all 0.3s ease);
         }
 
         .children-card h2 {
-            color:var(--primary-blue);
+            color: var(--primary-blue, #1e3a8a);
+            margin-bottom: 15px;
         }
 
+        .children-card ul {
+            padding-left: 20px;
+            color: var(--text-muted, #4b5563);
+            line-height: 1.8;
+        }
+
+        .children-card p {
+            color: var(--text-muted, #4b5563);
+            line-height: 1.7;
+        }
     </style>
 
 </head>
 
 <body>
 
+    <!-- GLOBAL HEADER -->
+    <header class="global-header">
+        <div class="brand-identity">
+            <a href="../index.html" style="text-decoration: none;">
+                <span class="brand-title">Living Waters</span>
+            </a>
+            <span class="brand-sub">Community Church</span>
+        </div>
 
-<!-- GLOBAL HEADER -->
-<header class="global-header">
+        <nav class="nav-container">
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../about/index.html">About</a></li>
+                <li><a href="index.html" class="active">Ministries</a></li>
+                <li><a href="../media/index.html">Media</a></li>
+                <li><a href="../calendar/index.html">Calendar</a></li>
+                <li><a href="../rightnow/index.html">RightNow</a></li>
+                
+                <!-- Global Theme Toggle Slider Button -->
+                <li>
+                    <button id="theme-toggle" class="btn-theme-toggle" aria-label="Toggle Dark/Light Mode">
+                        <span class="slider-thumb">
+                            <i id="theme-icon" class="fa-solid fa-moon"></i>
+                        </span>
+                    </button>
+                </li>
 
-    <div class="brand-identity">
-        <span class="brand-title">Living Waters</span>
-        <span class="brand-sub">Community Church</span>
-    </div>
+                <li>
+                    <a href="../guestbook.html" class="nav-btn btn-nav-guest">Guest</a>
+                </li>
+                <li>
+                    <a href="../donate/index.html" class="nav-btn btn-nav-give">Give</a>
+                </li>
+                <li>
+                    <a href="../login.html" class="nav-btn btn-nav-sign-in" style="background:#38bdf8; color:#0f172a; padding:10px 15px; border-radius:6px; font-weight:700;">Sign In</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
 
+    <!-- GLOBAL TICKER -->
+    <div id="global-ticker"></div>
 
-    <nav class="nav-container">
+    <!-- HERO -->
+    <section class="children-hero">
+        <div class="children-hero-content">
+            <h1>Children's Ministry</h1>
+            <p>
+                Helping children discover God's love, grow in faith, and build friendships through engaging Bible teaching, activities, and community.
+            </p>
+        </div>
+    </section>
 
-        <ul class="nav-links">
+    <!-- MAIN CONTENT -->
+    <main class="children-section">
+        <div class="children-card">
+            <h2>Growing Faith From The Beginning</h2>
+            <p>
+                At Living Waters Community Church, we believe children are an important part of God's family.
+                Our children's ministry provides a safe, welcoming environment where kids can learn biblical truths,
+                develop friendships, and experience the love of Christ.
+            </p>
+        </div>
 
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="../about/index.html">About</a></li>
-            <li><a href="index.html">Ministries</a></li>
-            <li><a href="../media/index.html">Media</a></li>
-            <li><a href="../calendar/index.html">Calendar</a></li>
-            <li><a href="../rightnow/index.html">RightNow</a></li>
-            <li>
-                <a href="../guestbook.html"
-                class="nav-btn btn-nav-guest">
-                Guest
-                </a>
-            </li>
-            <li>
-                <a href="../donate/index.html"
-                class="nav-btn btn-nav-give">
-                Give
-                </a>
-            </li>
-            <li>
-                <a href="../login.html"
-                class="nav-btn btn-nav-sign-in"
-                style="
-                background:#38bdf8;
-                color:#0f172a;
-                padding:10px 15px;
-                border-radius:6px;
-                font-weight:700;">
-                Sign In
-                </a>
-            </li>
+        <div class="children-card">
+            <h2>What We Offer</h2>
+            <ul>
+                <li>Bible-centered lessons designed for children</li>
+                <li>Interactive activities and learning experiences</li>
+                <li>A safe and caring environment</li>
+                <li>Opportunities for children to serve and grow</li>
+            </ul>
+        </div>
 
-        </ul>
+        <div class="children-card">
+            <h2>Join Us</h2>
+            <p>
+                We invite your family to be part of our children's ministry.
+                Come grow with us as we help children know God and His Word.
+            </p>
+        </div>
+    </main>
 
-    </nav>
+    <!-- FOOTER -->
+    <div id="global-footer"></div>
 
-</header>
-
-<!-- GLOBAL TICKER -->
-
-<div id="global-ticker"></div>
-
-<!-- HERO -->
-
-<section class="children-hero">
-    <div class="children-hero-content">
-        <h1>
-            Children's Ministry
-        </h1>
-        <p>
-            Helping children discover God's love,
-            grow in faith, and build friendships
-            through engaging Bible teaching,
-            activities, and community.
-        </p>
-
-    </div>
-
-</section>
-
-<main class="children-section">
-<div class="children-card">
-<h2>
-Growing Faith From The Beginning
-</h2>
-
-<p>
-At Living Waters Community Church, we believe children are an important part of God's family.
-Our children's ministry provides a safe, welcoming environment where kids can learn biblical truths,
-develop friendships, and experience the love of Christ.
-</p>
-
-</div>
-
-<div class="children-card">
-
-<h2>
-What We Offer
-</h2>
-
-<ul>
-
-<li>Bible-centered lessons designed for children</li>
-<li>Interactive activities and learning experiences</li>
-<li>A safe and caring environment</li>
-<li>Opportunities for children to serve and grow</li>
-
-</ul>
-
-</div>
-
-<div class="children-card">
-
-<h2>Join Us</h2>
-
-<p>
-We invite your family to be part of our children's ministry.
-Come grow with us as we help children know God and His Word.
-</p>
-
-</div>
-
-</main>
-
-<!-- FOOTER -->
-
-<div id="global-footer"></div>
-
-<script src="../assets/JS/ticker.js"></script>
-<script src="../assets/JS/footer.js"></script>
-
+    <!-- SCRIPTS -->
+    <script src="../assets/JS/ticker.js"></script>
+    <script src="../assets/JS/footer.js"></script>
+    <script src="../assets/JS/theme.js"></script>
 
 </body>
 </html>
