@@ -9,7 +9,7 @@
 </head>
 <body>
 
-    <!-- GLOBAL NAVIGATION HEADER -->
+   <!-- GLOBAL NAVIGATION HEADER -->
     <header class="global-header">
         <div class="brand-identity">
             <span class="brand-title">Living Waters</span>
@@ -23,6 +23,12 @@
                 <li><a href="media/index.html">Media</a></li>
                 <li><a href="calendar/index.html">Calendar</a></li>
                  <li><a href="rightnow/index.html">RightNow</a></li>
+                <!-- Theme Toggle Button -->
+                <li>
+                    <button id="theme-toggle" class="btn-theme-toggle" aria-label="Toggle Theme">
+                        <i id="theme-icon" class="fa-solid fa-moon"></i>
+                    </button>
+                </li>
                 <li><a href="../donate/index.html" class="btn-nav-give">Give</a></li>
             </ul>
         </nav>
@@ -373,11 +379,46 @@
 
     </main>
 
-    <!-- GLOBAL FOOTER -->
-    <div id="global-footer"></div>
-    
-    <script src="assets/JS/footer.js"></script> 
-    
+            <!-- GLOBAL FOOTER -->
+            <div id="global-footer"></div>
+            
+            <script src="assets/JS/footer.js"></script> 
+        
+            <script>
+          const themeToggleBtn = document.getElementById('theme-toggle');
+          const themeIcon = document.getElementById('theme-icon');
+        
+          // 1. Check saved preference or system default
+          const savedTheme = localStorage.getItem('theme');
+          const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+          if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+            document.body.setAttribute('data-theme', 'dark');
+            if (themeIcon) themeIcon.className = 'fa-solid fa-sun';
+          } else {
+            document.body.setAttribute('data-theme', 'light');
+            if (themeIcon) themeIcon.className = 'fa-solid fa-moon';
+          }
+        
+          // 2. Toggle Theme Handler
+          if (themeToggleBtn) {
+            themeToggleBtn.addEventListener('click', () => {
+              const currentTheme = document.body.getAttribute('data-theme');
+              let newTheme = 'light';
+        
+              if (currentTheme === 'light') {
+                newTheme = 'dark';
+                if (themeIcon) themeIcon.className = 'fa-solid fa-sun';
+              } else {
+                if (themeIcon) themeIcon.className = 'fa-solid fa-moon';
+              }
+        
+              document.body.setAttribute('data-theme', newTheme);
+              localStorage.setItem('theme', newTheme);
+            });
+          }
+        </script>
+            
    <script>
     document.addEventListener('DOMContentLoaded', () => {
         const memberList = document.getElementById('member-list');
