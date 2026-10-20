@@ -146,23 +146,35 @@ html {
     transform: translateY(-1px);
 }
 
-/* Theme Toggle Button Style */
+/* ==========================================================================
+   THEME TOGGLE BUTTON STYLING
+   ========================================================================== */
 .btn-theme-toggle {
-    background: transparent;
+    background-color: transparent;
     border: 1px solid var(--card-border);
-    color: var(--text-main);
-    padding: 8px 12px;
+    color: var(--text-muted);
+    padding: 8px 14px;
     border-radius: var(--radius-sm);
     cursor: pointer;
-    font-size: 1rem;
-    display: flex;
+    font-size: 0.95rem;
+    font-weight: 500;
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
+    gap: 8px; /* Proper breathing room between the icon and text */
     transition: var(--transition-smooth);
+    vertical-align: middle;
 }
 
 .btn-theme-toggle:hover {
     background-color: var(--bg-light);
+    color: var(--accent-blue);
+    border-color: var(--accent-blue);
+    transform: translateY(-1px);
+}
+
+.btn-theme-toggle i {
+    font-size: 1rem;
+    line-height: 1;
 }
 
 /* ==========================================================================
