@@ -1,22 +1,23 @@
 /* ==========================================================================
-   1. GLOBAL RESETS & CSS VARIABLES
+   1. GLOBAL RESETS & CSS VARIABLES & DARK MODE
    ========================================================================== */
 :root {
-    /* Color Palette */
+    /* Color Palette (Light Mode Defaults) */
     --primary-blue: #1e3a8a;      /* Deep, trustworthy blue anchor */
     --accent-blue: #2563eb;       /* Vibrant blue for links/actions */
     --text-main: #1f2937;         /* Charcoal dark for crisp text readability */
     --text-muted: #4b5563;        /* Muted slate for body descriptions */
     --bg-light: #f8fafc;          /* Off-white background for grid sections */
     --bg-white: #ffffff;          /* Pure white for card components */
+    --bg-body: #f7f6f2;           /* Soft eggshell background tone */
+    --card-border: #e2e8f0;       /* Card border default */
     
     /* Ministry Color Coding */
-    --color-men: #1e3a8a;      /* Deep Blue (matches primary-blue) */
-    --color-women: #ec4899;    /* Vibrant Pink */
+    --color-men: #1e3a8a;       /* Deep Blue (matches primary-blue) */
+    --color-women: #ec4899;     /* Vibrant Pink */
     --color-outreach: #059669; /* Emerald Green */
-    --color-admin: #64748b;    /* Slate Gray */
+    --color-admin: #64748b;     /* Slate Gray */
 
-    
     /* Layout & Utility Variables */
     --max-width: 1200px;
     --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
@@ -25,11 +26,25 @@
     --radius-lg: 12px;
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
-    /* Combined Category Modifiers */
-   .event-men { border-top: 5px solid var(--color-men) !important; background-color: #eff6ff !important; }
-   .event-women { border-top: 5px solid var(--color-women) !important; background-color: #fdf2f8 !important; }
-   .event-outreach { border-top: 5px solid var(--color-outreach) !important; background-color: #ecfdf5 !important; }
-   .event-admin { border-top: 5px solid var(--color-admin) !important; background-color: #f8fafc !important; }
+
+/* Dark Mode Overrides */
+body[data-theme="dark"] {
+    --primary-blue: #60a5fa;
+    --accent-blue: #38bdf8;
+    --text-main: #f1f5f9;
+    --text-muted: #94a3b8;
+    --bg-light: #1e293b;
+    --bg-white: #0f172a;
+    --bg-body: #090d16;
+    --card-border: #334155;
+    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+}
+
+/* Combined Category Modifiers */
+.event-men { border-top: 5px solid var(--color-men) !important; background-color: #eff6ff !important; }
+.event-women { border-top: 5px solid var(--color-women) !important; background-color: #fdf2f8 !important; }
+.event-outreach { border-top: 5px solid var(--color-outreach) !important; background-color: #ecfdf5 !important; }
+.event-admin { border-top: 5px solid var(--color-admin) !important; background-color: #f8fafc !important; }
 
 * {
     margin: 0;
@@ -41,12 +56,25 @@ body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     line-height: 1.6;
     color: var(--text-main);
-    background-color: #f7f6f2; /* Soft eggshell background tone */
+    background-color: var(--bg-body); /* Uses variable for dynamic switching */
     overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 html {
     scroll-behavior: smooth;
+}
+
+/* Update cards to use variables so they switch dynamically */
+.media-panel,
+.feature-card,
+.giving-card,
+.ministry-card,
+.dashboard-card,
+.event-card {
+    background-color: var(--bg-white) !important;
+    border-color: var(--card-border) !important;
+    color: var(--text-main) !important;
 }
 
 /* ==========================================================================
@@ -116,6 +144,25 @@ html {
     background-color: var(--accent-blue);
     color: var(--bg-white);
     transform: translateY(-1px);
+}
+
+/* Theme Toggle Button Style */
+.btn-theme-toggle {
+    background: transparent;
+    border: 1px solid var(--card-border);
+    color: var(--text-main);
+    padding: 8px 12px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-smooth);
+}
+
+.btn-theme-toggle:hover {
+    background-color: var(--bg-light);
 }
 
 /* ==========================================================================
