@@ -4,13 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ministries | Living Waters Community Church</title>
+    
+    <!-- CSS Stylesheet -->
     <link rel="stylesheet" href="../assets/css/style.css">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Theme Initialization Script (Prevents White Flash) -->
+    <script>
+      (function() {
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      })();
+    </script>
 </head>
 <body>
 
+    <!-- GLOBAL NAVIGATION HEADER -->
     <header class="global-header">
         <div class="brand-identity">
-            <span class="brand-title">Living Waters</span>
+            <a href="../index.html" style="text-decoration: none;">
+                <span class="brand-title">Living Waters</span>
+            </a>
             <span class="brand-sub">Community Church</span>
         </div>
         <nav class="nav-container">
@@ -20,9 +39,18 @@
                 <li><a href="index.html" class="active">Ministries</a></li>
                 <li><a href="../media/index.html">Media</a></li>
                 <li><a href="../calendar/index.html">Calendar</a></li>
-                <li><a href="../rightnow/index.html">Rightnow</a></li>
+                <li><a href="../rightnow/index.html">RightNow</a></li>
+                
+                <!-- Global Theme Toggle Slider Button -->
+                <li>
+                    <button id="theme-toggle" class="btn-theme-toggle" aria-label="Toggle Dark/Light Mode">
+                        <span class="slider-thumb">
+                            <i id="theme-icon" class="fa-solid fa-moon"></i>
+                        </span>
+                    </button>
+                </li>
+
                 <li><a href="../donate/index.html" class="btn-nav-give">Give</a></li>
-            </ul>
             </ul>
         </nav>
     </header>
@@ -38,6 +66,7 @@
 
         <div class="ministries-grid">
             
+            <!-- 1. Children's Ministry -->
             <div class="ministry-card">
                 <div class="ministry-card-content">
                     <span class="ministry-icon">🎨</span>
@@ -47,6 +76,7 @@
                 <a href="children.html" class="btn-ministry-contact">Get Connected</a>
             </div>
 
+            <!-- 2. Student Ministry -->
             <div class="ministry-card">
                 <div class="ministry-card-content">
                     <span class="ministry-icon">🚀</span>
@@ -56,6 +86,7 @@
                 <a href="students.html" class="btn-ministry-contact">Get Connected</a>
             </div>
 
+            <!-- 3. Women's Ministry -->
             <div class="ministry-card">
                 <div class="ministry-card-content">
                     <span class="ministry-icon">🌸</span>
@@ -65,6 +96,7 @@
                 <a href="women.html" class="btn-ministry-contact">Get Connected</a>
             </div>
 
+            <!-- 4. Men's Ministry -->
             <div class="ministry-card">
                 <div class="ministry-card-content">
                     <span class="ministry-icon">⚓</span>
@@ -74,15 +106,17 @@
                 <a href="men.html" class="btn-ministry-contact">Get Connected</a>
             </div>
 
+            <!-- 5. Singles Ministry -->
             <div class="ministry-card">
                 <div class="ministry-card-content">
-                    <span class="ministry-icon">⚓</span>
+                    <span class="ministry-icon">👥</span>
                     <h3>Singles Ministry</h3>
-                    <p>Forming Christian singles through intentional accountability, breakfast gatherings, service projects, and Bible study groups focused on leadership and integrity.</p>
+                    <p>Forming Christian singles through intentional accountability, social gatherings, service projects, and Bible study groups focused on growth and spiritual maturity.</p>
                 </div>
                 <a href="singles.ministries.html" class="btn-ministry-contact">Get Connected</a>
             </div>
 
+            <!-- 6. Bible Studies & Connection Groups -->
             <div class="ministry-card">
                 <div class="ministry-card-content">
                     <span class="ministry-icon">📖</span>
@@ -92,7 +126,7 @@
                 <a href="bible-studies.html" class="btn-ministry-contact">Find a Group</a>
             </div>
 
-            <!-- 7. A Mission of Hope (Local Benevolence & Outreach) -->
+            <!-- 7. A Mission of Hope -->
             <div class="ministry-card">
                 <div class="ministry-card-content">
                     <span class="ministry-icon">❤️</span>
@@ -102,6 +136,7 @@
                 <a href="mission-of-hope.html" class="btn-ministry-contact">Volunteer / Learn More</a>
             </div>
 
+            <!-- 8. Suttons on Mission -->
             <div class="ministry-card">
                 <div class="ministry-card-content">
                     <span class="ministry-icon">🌍</span>
@@ -111,26 +146,23 @@
                 <a href="suttons-on-mission.html" class="btn-ministry-contact">Learn About Missions</a>
             </div>
 
-            <!-- Hope's Cry -->
+            <!-- 9. Hope's Cry -->
             <div class="ministry-card">
                 <div class="ministry-card-content">
                     <span class="ministry-icon">🕊️</span>
                     <h3>Hope's Cry</h3>
-                    <p>
-                        Partnering with Hope's Cry to bring freedom, healing, and hope to survivors of human trafficking through Christ-centered restoration, prevention, education, and community outreach in Uganda.
-                    </p>
+                    <p>Partnering with Hope's Cry to bring freedom, healing, and hope to survivors of human trafficking through Christ-centered restoration, prevention, education, and community outreach in Uganda.</p>
                 </div>
                 <a href="hopes-cry.html" class="btn-ministry-contact">Learn More</a>
             </div>
 
         </div>
     </main>
-    <!-- GLOBAL TICKER -->
+
+    <!-- SCRIPTS -->
     <script src="../assets/JS/ticker.js"></script>
-    <!-- GLOBAL FOOTER -->
     <div id="global-footer"></div>
-
     <script src="../assets/JS/footer.js"></script>
+    <script src="../assets/JS/theme.js"></script>
 </body>
-
-</html> 
+</html>
