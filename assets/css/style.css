@@ -704,6 +704,22 @@ html {
 /* ==========================================================================
    10. MEDIA & RESOURCES HUB LAYOUTS
    ========================================================================== */
+
+/* Ensure Grid and Split Rows align items to start instead of stretching */
+.media-split-row,
+.dashboard-grid {
+    align-items: start !important;
+}
+
+/* Keep panels and cards sized strictly to their inner content */
+.media-panel,
+.dashboard-card,
+.event-card {
+    height: fit-content !important;
+    align-self: flex-start !important;
+    flex: 0 0 auto !important; /* Prevents flex children from auto-growing */
+}
+
 .media-container {
     max-width: var(--max-width);
     margin: 60px auto;
