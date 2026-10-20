@@ -4,15 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A Mission of Hope | Living Waters Community Church</title>
-    <!-- Stepping up one directory level to reach our global assets folder -->
+
+    <!-- CSS Stylesheet -->
     <link rel="stylesheet" href="../assets/css/style.css">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Theme Initialization Script (Prevents White Flash) -->
+    <script>
+      (function() {
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      })();
+    </script>
 </head>
 <body>
 
     <!-- GLOBAL NAVIGATION HEADER -->
     <header class="global-header">
         <div class="brand-identity">
-            <span class="brand-title">Living Waters</span>
+            <a href="../index.html" style="text-decoration: none;">
+                <span class="brand-title">Living Waters</span>
+            </a>
             <span class="brand-sub">Community Church</span>
         </div>
         <nav class="nav-container">
@@ -21,16 +38,31 @@
                 <li><a href="../about/index.html">About</a></li>
                 <li><a href="index.html" class="active">Ministries</a></li>
                 <li><a href="../media/index.html">Media</a></li>
+                <li><a href="../calendar/index.html">Calendar</a></li>
+                <li><a href="../rightnow/index.html">RightNow</a></li>
+
+                <!-- Global Theme Toggle Slider Button -->
+                <li>
+                    <button id="theme-toggle" class="btn-theme-toggle" aria-label="Toggle Dark/Light Mode">
+                        <span class="slider-thumb">
+                            <i id="theme-icon" class="fa-solid fa-moon"></i>
+                        </span>
+                    </button>
+                </li>
+
                 <li><a href="../donate/index.html" class="btn-nav-give">Give</a></li>
             </ul>
         </nav>
     </header>
 
+    <!-- GLOBAL ANNOUNCEMENT TICKER -->
+    <div id="global-ticker"></div>
+
     <!-- MINISTRY SUB-PAGE SPLASH HERO -->
     <section class="hero-viewport" style="background: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.75)), url('../assets/images/hope-hero-placeholder.jpg') no-repeat center center/cover; min-height: 45vh;">
         <div class="hero-content">
-            <h1>"A Mission of Hope"</h1>
-            <p>Our hands-on local benevolence and community outreach anchor in Oak Grove.</p>
+            <h1 style="color: #ffffff !important; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);">"A Mission of Hope"</h1>
+            <p style="color: #ffffff !important; text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);">Our hands-on local benevolence and community outreach anchor in Oak Grove.</p>
         </div>
     </section>
 
@@ -45,9 +77,9 @@
             <div class="media-panel" style="flex: 2;">
                 
                 <!-- BRANCH 1: SUMMER LUNCH PROGRAM -->
-                <div style="background: var(--bg-light); border: 1px solid #e2e8f0; border-radius: var(--radius-lg); padding: 30px; margin-bottom: 35px;">
+                <div style="background: var(--bg-light); border: 1px solid var(--card-border); border-radius: var(--radius-lg); padding: 30px; margin-bottom: 35px;">
                     <h3 style="color: var(--primary-blue); margin-bottom: 5px;">Ron Brown Memorial Lunch Program</h3>
-                    <span style="display: inline-block; background: #e0f2fe; color: var(--accent-blue); font-size: 0.8rem; font-weight: 700; padding: 4px 10px; border-radius: 20px; text-transform: uppercase; margin-bottom: 15px;">Active Outreach</span>
+                    <span style="display: inline-block; background: #e0f2fe; color: #0284c7; font-size: 0.8rem; font-weight: 700; padding: 4px 10px; border-radius: 20px; text-transform: uppercase; margin-bottom: 15px;">Active Outreach</span>
                     
                     <p>Providing regular weekday meals for local youth at the <strong>Oak Grove Community Center</strong> (11:30 AM – 12:30 PM). This vital community bridge fuels local families throughout the summer break gap.</p>
                     
@@ -65,7 +97,7 @@
                 </div>
 
                 <!-- BRANCH 2: BACKPACK GIVEAWAY -->
-                <div style="background: var(--bg-white); border: 1px solid #e2e8f0; border-radius: var(--radius-lg); padding: 30px;">
+                <div style="background: var(--bg-white); border: 1px solid var(--card-border); border-radius: var(--radius-lg); padding: 30px; margin-bottom: 35px;">
                     <h3 style="color: var(--primary-blue); margin-bottom: 5px;">Annual Backpack Giveaway</h3>
                     <p style="font-style: italic; color: var(--text-muted); font-size: 0.95rem; margin-bottom: 15px;">In Memory of Helen J. Stanfill</p>
                     
@@ -92,10 +124,8 @@
                     </div>
                 </div>
 
-            </div>
-
-            <!-- BRANCH 3: MONTHLY PANTRY OUTREACHES -->
-                <div style="background: var(--bg-light); border: 1px solid #e2e8f0; border-radius: var(--radius-lg); padding: 30px; margin-bottom: 35px;">
+                <!-- BRANCH 3: MONTHLY PANTRY OUTREACHES -->
+                <div style="background: var(--bg-light); border: 1px solid var(--card-border); border-radius: var(--radius-lg); padding: 30px;">
                     <h3 style="color: var(--primary-blue); margin-bottom: 5px;">Food Security & Pantry Services</h3>
                     <span style="display: inline-block; background: #dcfce7; color: #15803d; font-size: 0.8rem; font-weight: 700; padding: 4px 10px; border-radius: 20px; text-transform: uppercase; margin-bottom: 15px;">Monthly Distributions</span>
                     
@@ -118,8 +148,10 @@
                     </div>
                 </div>
 
+            </div>
+
             <!-- Right Column: Leadership & Volunteer Action Card -->
-            <div class="media-panel" style="flex: 1; text-align: center; justify-content: flex-start; height: max-content; background-color: var(--bg-light); border: 1px solid #e2e8f0; border-radius: var(--radius-lg); padding: 30px;">
+            <div class="media-panel" style="flex: 1; text-align: center; justify-content: flex-start; height: max-content; background-color: var(--bg-light); border: 1px solid var(--card-border); border-radius: var(--radius-lg); padding: 30px;">
                 <div class="staff-photo-placeholder" style="margin-top: 10px;">👥</div>
                 <h4>Outreach Leadership</h4>
                 <span class="staff-role" style="margin-bottom: 15px;">Dean & Dawn Thomas</span>
@@ -131,27 +163,13 @@
         </div>
     </main>
 
-    <!-- GLOBAL FOOTER -->
-    <footer class="global-footer">
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h4>Living Waters</h4>
-                <p>Serving God, Loving People, Changing Lives.</p>
-            </div>
-            <div class="footer-col">
-                <h4>Gathering Times</h4>
-                <p>Sunday Worship: 10:30 AM</p>
-                <p>Tuesday Bible Study: 5:00 PM</p>
-            </div>
-            <div class="footer-col">
-                <h4>Mailing Address</h4>
-                <p>PO Box 1125<br>Oak Grove, KY 42262</p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Living Waters Community Church. All rights reserved.</p>
-        </div>
-    </footer>
+    <!-- GLOBAL FOOTER CONTAINER -->
+    <div id="global-footer"></div>
+
+    <!-- SCRIPTS -->
+    <script src="../assets/JS/ticker.js"></script>
+    <script src="../assets/JS/footer.js"></script>
+    <script src="../assets/JS/theme.js"></script>
 
 </body>
 </html>
