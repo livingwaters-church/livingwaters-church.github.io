@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }} | Living Waters Community Church</title>
+    
+    <!-- Link your main CSS stylesheet -->
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css"> <!-- Adjust path if your CSS folder is named differently -->
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Early Theme Script to Prevent Flash -->
+    <script>
+      const savedTheme = localStorage.getItem('theme');
+      const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    </script>
+</head>
+<body data-theme="light">
+
+    <!-- Includes the global header automatically -->
+    {% include header.html %}
+
+    {
