@@ -1569,3 +1569,12 @@ body[data-theme="dark"] .btn-theme-toggle .slider-thumb {
     font-weight: 600;
     color: #334155;
 }
+
+/* Ensure Hero Viewport Text is Always High-Contrast White */
+.hero-viewport h1,
+.hero-viewport p,
+.hero-content h1,
+.hero-content p {
+    color: #ffffff !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6); /* Adds extra readability over image overlays */
+}
