@@ -147,33 +147,50 @@ html {
 }
 
 /* ==========================================================================
-   THEME TOGGLE BUTTON STYLING
+   MODERN SLIDER THEME TOGGLE
    ========================================================================== */
 .btn-theme-toggle {
-    background-color: transparent;
+    background-color: var(--bg-light);
     border: 1px solid var(--card-border);
-    color: var(--text-muted);
-    padding: 8px 14px;
-    border-radius: var(--radius-sm);
+    width: 52px;
+    height: 28px;
+    border-radius: 50px;
+    position: relative;
     cursor: pointer;
-    font-size: 0.95rem;
-    font-weight: 500;
     display: inline-flex;
     align-items: center;
-    gap: 8px; /* Proper breathing room between the icon and text */
+    padding: 3px;
     transition: var(--transition-smooth);
     vertical-align: middle;
 }
 
 .btn-theme-toggle:hover {
-    background-color: var(--bg-light);
-    color: var(--accent-blue);
     border-color: var(--accent-blue);
-    transform: translateY(-1px);
 }
 
+/* The sliding circle container */
+.btn-theme-toggle .slider-thumb {
+    width: 20px;
+    height: 20px;
+    background-color: var(--primary-blue);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 0.7rem;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease;
+    transform: translateX(0);
+}
+
+/* When dark mode is active, slide the thumb to the right and change color */
+body[data-theme="dark"] .btn-theme-toggle .slider-thumb {
+    transform: translateX(24px);
+    background-color: var(--accent-blue);
+}
+
+/* Icon adjustments inside the thumb */
 .btn-theme-toggle i {
-    font-size: 1rem;
     line-height: 1;
 }
 
